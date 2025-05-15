@@ -63,18 +63,18 @@ const config = {
       ringColor: configureDefaultColorSpace(8),
       colors: {
         muted: "var(--base-8)", // muted is the same as base-8
-        base: getColorSpace("base"),
-        baseA: getColorSpace("baseA"),
-        primary: getColorSpace("primary"),
-        primaryA: getColorSpace("primaryA"),
-        secondary: getColorSpace("secondary"),
-        secondaryA: getColorSpace("secondaryA"),
-        ...Object.keys(colors)
-          .filter((x) => !(x.includes("P3") || x.includes("Dark")))
-          .map((x) => {
-            return [x, getColorSpace(x)];
-          })
-          .reduce((prev, cur) => ({ ...prev, [cur[0]]: cur[1] }), {}),
+        // base: getColorSpace("base"),
+        // baseA: getColorSpace("baseA"),
+        // primary: getColorSpace("primary"),
+        // primaryA: getColorSpace("primaryA"),
+        // secondary: getColorSpace("secondary"),
+        // secondaryA: getColorSpace("secondaryA"),
+        // ...Object.keys(colors)
+        //   .filter((x) => !(x.includes("P3") || x.includes("Dark")))
+        //   .map((x) => {
+        //     return [x, getColorSpace(x)];
+        //   })
+        //   .reduce((prev, cur) => ({ ...prev, [cur[0]]: cur[1] }), {}),
       },
       borderRadius: {
         lg: "var(--radius)",
