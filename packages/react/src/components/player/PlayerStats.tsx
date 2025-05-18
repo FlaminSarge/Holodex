@@ -39,12 +39,9 @@ export function VideoStats({
   });
 
   return (
-    <div className="flex items-center gap-1 text-sm text-base-9">
+    <div className="flex items-center gap-1 text-sm">
       {topic_id && (
-        <Badge
-          variant="outline"
-          className="mr-2 border-base capitalize text-base-9"
-        >
+        <Badge variant="outline" className="mr-2 border-base capitalize">
           {topic_id}
         </Badge>
       )}

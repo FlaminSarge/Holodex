@@ -21,7 +21,7 @@ export function LiveStreamInfo({
     <div
       className={cn(
         // currently hardcoded a translate value, will investigate to find a better way
-        " absolute flex translate-x-[-118px] translate-y-2 flex-col rounded-md bg-base-6 opacity-80",
+        " absolute flex translate-x-[-118px] translate-y-2 flex-col rounded-md  opacity-80",
         {
           visible: isVisible,
           invisible: !isVisible,
@@ -34,7 +34,7 @@ export function LiveStreamInfo({
           src={thumbnailLink}
           alt={altText}
         />
-        <p className="absolute z-30 px-1 text-white opacity-80 left-4 top-2 bg-black py-0.5">
+        <p className="absolute z-30 px-1 opacity-80 text-white left-4 top-2 bg-black py-0.5">
           {topicId}
         </p>
       </div>

@@ -21,15 +21,11 @@ export function LiveChat({ id, status, channelId, link }: LiveChatProps) {
 
   if (needExtension)
     return (
-      <div className="flex h-full w-full items-center justify-center p-4">
+      <div className="flex w-full items-center justify-center p-4 h-full">
         <span className="text-sm max-w-40 text-center">
           {t("views.watch.chat.archiveNeedExtension", {
             0: (
-              <Link
-                key="holodex"
-                className="text-secondary-11 underline"
-                to="/about/extensions"
-              >
+              <Link key="holodex" className="underline" to="/about/extensions">
                 Holodex+
               </Link>
             ),

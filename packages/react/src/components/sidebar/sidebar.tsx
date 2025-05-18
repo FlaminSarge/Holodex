@@ -66,7 +66,7 @@ export function Sidebar() {
 
   return (
     <aside className="z-40 border-r border-r-base pb-12" id="sidebar" ref={ref}>
-      <div className="flex flex-col bg-base-2 min-h-dvh">
+      <div className="flex flex-col min-h-dvh">
         <div className="flex items-center gap-2 px-4 pb-2 justify-end pt-4">
           <Link
             to="/"
@@ -110,18 +110,26 @@ export function Sidebar() {
           <Link
             to="/settings/content"
             className={cn(
-              `w-full justify-start rounded-md px-4 py-2 
-              text-center text-sm font-semibold tracking-tight text-base-9 
-              transition-opacity duration-300 hover:bg-base-3`,
+              // Base styles
+              `w-full justify-start rounded-md px-4 py-1.5 h-9 mt-1`,
+
+              // Text and font styles
+              `text-center text-sm font-semibold tracking-tight`,
+
+              // Transition and hover effect
+              `transition-opacity duration-300 hover:`,
               {
+                // Visible state when fs is true
                 "visible opacity-70": fs,
-                "opacity-0 group-hover/sidebar:opacity-50 hover:opacity-80!":
+                // Hidden state with hover effect when fs is false
+                "opacity-0 group-hover/sidebar:opacity-40 hover:opacity-60!":
                   !fs,
               },
             )}
             style={{
               //dotted border:
-              border: "2px dashed var(--base-4)",
+              border:
+                "2px dashed color-mix(in oklch, var(--foreground) 50%, transparent)",
             }}
           >
             Change Starred Orgs
@@ -155,7 +163,7 @@ export function Sidebar() {
             onClose={setClose}
           />
           <Button
-            className={cn("w-full justify-start", "font-light text-base-11")}
+            className={cn("w-full justify-start", "font-light cursor-pointer")}
             variant={"ghost"}
             onClick={() => setTldexOpen((o) => !o)}
           >
@@ -224,8 +232,8 @@ function SidebarItem({
     <Button
       asChild
       className={cn("w-full justify-start", className, {
-        "text-base-12 font-semibold tracking-tight": isHere,
-        "text-base-11 font-light": !isHere,
+        " font-semibold tracking-tight": isHere,
+        " font-light": !isHere,
       })}
       variant={isHere ? "primary" : "ghost"}
       onClick={isMobile ? onClose : undefined}

@@ -5,9 +5,9 @@ export const dialogVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-base-7 bg-base-1",
-        primary: "border-primary-7 bg-primary-1",
-        secondary: "border-secondary-7 bg-secondary-1",
+        default: " ",
+        primary: " ",
+        secondary: " ",
       },
     },
     defaultVariants: {

@@ -254,7 +254,7 @@ views:
     favoritesAreEmpty: You have no favorites!
     blockedAreEmpty: You have no blocked channels.
   home:
-    liveOrUpcomingHeading: Live <liveCount/> / Upcoming <upcomingCount/>
+    liveOrUpcomingHeading: Live & Upcoming
     recentVideosHeading: Recent Videos
     noStreams: No live or upcoming streams at the moment
     recentVideoToggles:
@@ -264,8 +264,7 @@ views:
     noLiveStreams:
       - Seems like all the VTubers are busy touching grass
       - Time to watch the backlog, because no one's streaming
-      - Vtubers are sleeping, time to watch clips!
-      - No one is live right now, go listen to some bangers on Musicdex!
+      - No one is live right now...
   library:
     savedVideosTitle: Saved Videos
     createYtPlaylistButton: Create YT Playlist ({0})
@@ -655,6 +654,8 @@ views:
 time:
   soon: soon
   diff_future_date: Starts {0} ({1})
+  diff_placeholder_future_date: Said to be {0} ({1})
+  diff_uncertain_future_date: Probably {0}? ({1}?)
   distance_past_date: '{0}'
 editor:
   music:
@@ -824,21 +825,12 @@ about:
     title: About Holodex
     summary:
       '0': >-
-        Holodex is a fan-built platform for watching VTubers. We are built by DD
-        for DDs.
+        Holodex is a dedicated platform created by fans, for fans who enjoy watching VTubers.
       '1': >-
-        We organize clips and collabs by talents included, tabulate songs sang
-        inside individual videos and as part of karaoke streams, compile
-        agencies and groups by generation and branch, provide ways to favorite
-        clips and streams, and allow you to watch livestreams with TLs (or
-        produce TLs live or in VODs with community-caption-alike features).
+        We organize clips and collaborations by featured talents, catalog songs performed in videos and karaoke streams, tabulate agencies and groups by generation and branch, provide personalized features for saving favorites, and enhance livestream viewing with community caption tools.
       '2': >-
-        We comply with the Derivative Work Agreement of hololive production and
-        attempt to extend that to other orgs and agencies. We also operate
-        within the specifications of Youtube Data API and Embed Player Terms of
-        Service. Please reach out to us via Discord or Twitter DM for any
-        service inquiries.
-      title: About Holodex
+        We adhere to hololive production's Derivative Work Agreement and aim to extend similar respect to other organizations. Our platform operates within YouTube's Data API and Embed Player Terms of Service guidelines. For inquiries about our service, please contact us via Discord or Twitter DM.
+      title: What's Holodex?
     credits:
       '0': >-
         Big shout out to Jet/HoloTools for helping us with the API and inspiring
@@ -849,7 +841,7 @@ about:
         Discord!)
   quicklink:
     twitter: Twitter
-    ko-fi: Superchat
+    ko-fi: Donate
     github: Github
     apiDocs: API
   contact:

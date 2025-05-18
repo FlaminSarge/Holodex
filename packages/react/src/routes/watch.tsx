@@ -67,7 +67,7 @@ const VideoContent = ({
       })}
     >
       {/* min-w-0 and shrink are necessary here for the player to shrink on Chrome (specifically Chrome) */}
-      <div className="shrink grow min-w-0">
+      <div className="grow shrink min-w-0">
         <PlayerWrapper id={currentVideo?.id} url={url} />
       </div>
       {theaterMode && <TheaterModeChat currentVideo={currentVideo} />}
@@ -203,7 +203,7 @@ export function Watch() {
   );
 
   const playerContainerClasses = cn(
-    "flex w-full flex-col bg-base-3",
+    "flex w-full flex-col ",
     theaterMode && "aspect-video @screen-lg:h-dvh", // equal to screen height when theater mode
     regularMode && "overflow-hidden rounded-lg",
   );
@@ -219,7 +219,7 @@ export function Watch() {
         <meta name="description" content={currentVideo?.description} />
       </Helmet>
 
-      <div className="flex h-full w-full @container">
+      <div className="flex w-full @container h-full">
         <div className={containerClasses}>
           {/* Container adds padding and width constraint */}
           <div className="flex w-full flex-col gap-4">

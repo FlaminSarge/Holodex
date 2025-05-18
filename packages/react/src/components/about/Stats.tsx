@@ -1,44 +1,43 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/KfbKQpc7Uhn
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-"use client";
-
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardHeader,
   CardTitle,
 } from "@/shadcn/ui/card";
-import { useState, useEffect } from "react";
 
+/**
+ * Props for the StatBlock component.
+ */
 interface StatBlockProps {
   /**
    * The title of the statistic.
    */
   title: string;
+
   /**
    * The initial amount to display.
    */
   amount: number;
+
   /**
    * The change in the amount. Optional.
    */
   change?: number;
+
   /**
    * The duration of the animation in milliseconds.
    */
   duration: number;
+
   /**
    * The text to display after the amount. Optional.
    */
-  timeText?: string; // e.g. "last week"
+  timeText?: string;
 }
 
 /**
- * Renders a statistic card with an animated display of the amount.
+ * Renders a statistic block with an animated display of the amount.
  */
 export default function StatComponent({
   title,
@@ -64,17 +63,15 @@ export default function StatComponent({
   }, [amount, duration]);
 
   return (
-    <Card className="">
-      <CardHeader className="p-4 pb-2 space-y-1">
+    <Card>
+      <CardContent>
         <CardDescription>{title}</CardDescription>
-        <CardTitle className="text-3xl">
+        <CardTitle className="from-primary max-w-min to-foreground bg-linear-to-r bg-clip-text text-3xl text-transparent drop-shadow-[2px_1px_24px_var(--primary)] transition-all duration-300 dark:from-foreground dark:to-primary">
           {displayAmount.toLocaleString()}
         </CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        {change && (
+        {change !== undefined && (
           <div
-            className={`text-xs ${displayAmount > 0 ? "text-green-10" : "text-red-10"}`}
+            className={`text-xs ${change > 0 ? "text-green-10" : "text-red-10"}`}
           >
             {change > 0 ? `+${change} ` : `${change} `}
             {timeText}

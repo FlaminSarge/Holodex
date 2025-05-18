@@ -13,7 +13,7 @@ export function Multiview() {
       </Helmet>
       <div
         id="multiview-banner"
-        className="sticky top-0 z-20 flex justify-start gap-2 rounded-lg bg-base-2 p-2 text-base-11 transition-all md:mx-8 md:px-2"
+        className="sticky top-0 z-20 flex justify-start gap-2 rounded-lg p-2 transition-all md:mx-8 md:px-2"
       >
         <Toolbar />
       </div>

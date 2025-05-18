@@ -26,12 +26,12 @@ const toastVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-base-7 bg-base-1 text-base-12",
+        default: "  ",
         destructive: "border-red-7 bg-red-9 text-red-12",
         warning: "border-amber-7 bg-amber-9 text-amber-12",
         info: "border-jade-7 bg-jade-9 text-jade-12",
-        secondary: "border-secondary-7 bg-secondary-9 text-secondary-12",
-        primary: "border-primary-7 bg-primary-9 text-primary-12",
+        secondary: "  ",
+        primary: "  ",
         error: "border-red-7 bg-red-9 text-red-12",
       },
     },
@@ -76,9 +76,8 @@ const toastCloseVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-base-11 hover:text-base-12 focus:opacity-100",
-        secondary:
-          "text-secondary-9 hover:text-secondary-5 focus:ring-secondary-7 focus:ring-offset-secondary-8",
+        default: " hover: focus:opacity-100",
+        secondary: " hover: focus: focus:ring-offset-secondary-8",
       },
     },
   }
@@ -95,7 +94,7 @@ const ToastClose = React.forwardRef<
     toast-close=""
     {...props}
   >
-    <div className="h-4 w-4 i-lucide:x text-base-6 hover:text-base-11"></div>
+    <div className="h-4 w-4 i-lucide:x  hover:"></div>
   </ToastPrimitives.Close>
 ))
 ToastClose.displayName = ToastPrimitives.Close.displayName

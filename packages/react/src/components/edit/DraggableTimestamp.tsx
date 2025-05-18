@@ -137,11 +137,8 @@ export function TimeAdjuster({
 
   return (
     <div className="flex items-center justify-center space-x-4">
-      <div className="relative flex flex-col items-center text-base-8 px-2">
-        <button
-          className="text-sm text-base-8 hover:text-base-10"
-          onClick={setTimeToCurrent}
-        >
+      <div className="flex flex-col items-center relative px-2">
+        <button className="text-sm hover:" onClick={setTimeToCurrent}>
           Set to current time
         </button>
         <div
@@ -149,11 +146,11 @@ export function TimeAdjuster({
           onMouseDown={handleMouseDown}
         >
           <div
-            className="hover:text-base-10 cursor-pointer i-mdi:chevron-double-left"
+            className="hover: cursor-pointer i-mdi:chevron-double-left"
             onClick={() => incrementTime(-5)}
           />
           <div
-            className="cursor-pointer hover:text-base-10 i-mdi:chevron-left"
+            className="cursor-pointer hover: i-mdi:chevron-left"
             onClick={() => incrementTime(-1)}
           />
 
@@ -183,11 +180,11 @@ export function TimeAdjuster({
                   onValueChange(time);
                 }
               }}
-              className="text-center text-lg h-7 w-28 py-0 font-mono text-base-12"
+              className="text-center text-lg h-7 w-28 py-0 font-mono"
             />
           ) : (
             <div
-              className="relative font-mono text-lg text-base-11 mx-1"
+              className="relative font-mono text-lg mx-1"
               onClick={() => {
                 if (!wasDragged.current) setEditMode(true);
               }}
@@ -196,17 +193,17 @@ export function TimeAdjuster({
             </div>
           )}
           <div
-            className="cursor-pointer hover:text-base-10 i-mdi:chevron-right"
+            className="cursor-pointer hover: i-mdi:chevron-right"
             onClick={() => incrementTime(1)}
           />
           <div
-            className="cursor-pointer hover:text-base-10 i-mdi:chevron-double-right"
+            className="cursor-pointer hover: i-mdi:chevron-double-right"
             onClick={() => incrementTime(5)}
           />
         </div>
         <span
           className={clsx(
-            "pointer-events-none absolute top-14 text-center font-sans text-xs text-base-7 opacity-0 transition-opacity",
+            "pointer-events-none absolute top-14 text-center font-sans text-xs  opacity-0 transition-opacity",
             {
               "peer-hover:opacity-100": !editMode,
             },
@@ -298,7 +295,7 @@ export function DurationAdjuster({
     <div className="flex items-center justify-center gap-x-2">
       <div className="relative flex flex-col items-center pt-5">
         <div
-          className="peer flex cursor-ew-resize items-center justify-center gap-1 py-1 text-base-8"
+          className="peer flex cursor-ew-resize items-center justify-center gap-1 py-1"
           onMouseDown={handleMouseDown}
         >
           {editMode ? (
@@ -327,11 +324,11 @@ export function DurationAdjuster({
                   onValueChange(time);
                 }
               }}
-              className="h-7 w-28 py-0 text-center font-mono text-base-12"
+              className="h-7 w-28 py-0 text-center font-mono"
             />
           ) : (
             <div
-              className="relative font-mono text-base-11 mx-3 mt-0.5"
+              className="relative font-mono mx-3 mt-0.5"
               onClick={() => {
                 if (!wasDragged.current) setEditMode(true);
               }}
@@ -342,7 +339,7 @@ export function DurationAdjuster({
         </div>
         <span
           className={clsx(
-            "pointer-events-none absolute top-14 w-40 text-center font-sans text-xs text-base-7 opacity-0 transition-opacity",
+            "pointer-events-none absolute top-14 w-40 text-center font-sans text-xs  opacity-0 transition-opacity",
             {
               "peer-hover:opacity-100": !editMode,
             },

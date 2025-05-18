@@ -44,13 +44,13 @@ export default function TimezoneSelector() {
           <Badge
             key={timezone}
             variant="primary"
-            className="flex cursor-pointer items-center gap-1 h-7 rounded-sm p-1 pr-2"
+            className="flex cursor-pointer items-center gap-1 p-1 pr-2 h-7 rounded-sm"
           >
             <div className="i-mdi:clock-outline" />
             {timezone}
             <button
               onClick={() => handleTimezoneRemove(timezone)}
-              className="ml-1 hover:text-primary-12"
+              className="hover: ml-1"
             >
               <div className="h-4 w-4 i-mdi:close" />
             </button>
@@ -59,7 +59,8 @@ export default function TimezoneSelector() {
 
         <Select onValueChange={handleTimezoneAdd}>
           <SelectTrigger
-            className="flex h-7 items-center rounded-sm justify-center p-0 w-7 border-none bg-primary-9"
+            size="sm"
+            className="flex items-center rounded-sm p-0 justify-center w-12 max-h-7 border-none"
             showIcon={false}
           >
             <div className="h-7 w-7 i-mdi:plus" />

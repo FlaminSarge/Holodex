@@ -123,15 +123,15 @@ export function VideoCard({
     () => ({
       outerLayer: cn([
         "opacity-100 transition-opacity duration-300 starting:opacity-0",
-        size == "list" && "rounded-sm hover:bg-base-3 @lg:px-2",
+        size == "list" && "rounded-sm hover: @lg:px-2",
         (size == "list" || size == "sm") &&
           "group relative flex gap-2 py-2 @lg:gap-4",
         (size == "md" || size == "lg") && "group flex w-full flex-col gap-4",
         onClick && "cursor-pointer",
         selectionMode &&
           (selectedSet?.has(video.id)
-            ? "rounded-lg ring-4 ring-primary-8 ring-offset-2 ring-offset-base-2 "
-            : "rounded-lg opacity-50 ring-4 ring-base-6 ring-offset-2 ring-offset-base-2 brightness-75 saturate-[0.75]"),
+            ? "rounded-lg ring-4  ring-offset-2 ring-offset-base-2 "
+            : "rounded-lg opacity-50 ring-4  ring-offset-2 ring-offset-base-2 brightness-75 saturate-[0.75]"),
       ]),
       thumbnailLink: cn([
         size == "list" &&
@@ -151,8 +151,8 @@ export function VideoCard({
           "line-clamp-2 pr-4 text-sm font-bold md:text-[1rem] md:leading-6",
       ]),
       channelLink:
-        "line-clamp-1 text-sm text-primary-11 hover:text-primary-12 @lg:text-sm",
-      scheduleText: "text-sm @lg:text-sm text-base-11",
+        "line-clamp-1 text-sm text-link/80 hover:text-primary-foreground @lg:text-sm",
+      scheduleText: "text-sm @lg:text-sm ",
     }),
     [size, onClick, selectionMode, selectedSet, video.id],
   );
@@ -389,10 +389,7 @@ function VideoCardDuration({
     >
       {placeholderType && (
         <div
-          className={
-            placeholderIcon +
-            (durationMs ? " text-base-11" : " my-1 text-lg text-base-9")
-          }
+          className={placeholderIcon + (durationMs ? " " : " my-1 text-lg ")}
         />
       )}
       {isPremiere

@@ -88,9 +88,7 @@ export const OrgReranker = ({
     <div className="grid grid-cols-1 gap-4 min-w-72 lg:grid-cols-2">
       <div>
         <div>
-          <h3 className="mb-2 text-lg font-semibold text-base-11 text-center">
-            Starred
-          </h3>
+          <h3 className="mb-2 text-lg font-semibold text-center">Starred</h3>
         </div>
         <DndContext
           sensors={sensors}
@@ -103,7 +101,7 @@ export const OrgReranker = ({
           >
             {starredOrgs.map((org) => (
               <SortableItem key={"draggable" + org.name} id={org.name}>
-                <div className="my-1 flex h-10 items-center justify-between rounded p-2 bg-primaryA-4 cursor-grab">
+                <div className="flex h-10 items-center justify-between p-2 my-1 rounded cursor-grab">
                   <div className="mr-1 i-mdi:drag"></div>
                   <span className="grow">{org.name}</span>
                   <button
@@ -120,23 +118,23 @@ export const OrgReranker = ({
       </div>
 
       <div className="">
-        <h3 className="mb-2 text-center text-lg font-semibold text-base-11">
+        <h3 className="mb-2 text-center text-lg font-semibold">
           Other Organizations
         </h3>
-        <div className="flex h-9 w-full rounded-md border border-base bg-transparent px-3 text-sm shadow-xs rounded-b-none transition-colors focus-within:ring-2 focus-within:outline-hidden focus-within:ring-primaryA-8">
+        <div className="flex w-full bg-transparent text-sm focus-within: h-9 rounded-md border border-base px-3 shadow-xs rounded-b-none transition-colors focus-within:ring-2 focus-within:outline-hidden">
           <input
             type="text"
             placeholder="Filter organizations..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full border-none bg-transparent outline-hidden border-0 border-transparent placeholder:text-base-8"
+            className="w-full bg-transparent placeholder: border-none outline-hidden border-0 border-transparent"
           />
         </div>
-        <ScrollArea className="rounded-md border px-1 border-base-5 h-60 rounded-b rounded-t-none md:h-80">
+        <ScrollArea className="rounded-md border px-1 h-60 rounded-b rounded-t-none md:h-80">
           {filteredUnstarredOrgs.map((org) => (
             <div
               key={"unstarred-" + org.name}
-              className="my-1 flex items-center justify-between rounded bg-base-4 p-2"
+              className="my-1 flex items-center justify-between rounded p-2"
             >
               <span>{org.name}</span>
               <button

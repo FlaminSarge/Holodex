@@ -62,7 +62,7 @@ const SelectedVideosModal = ({
             key={video.id}
             className={
               "flex items-center space-x-2 px-2 py-1 " +
-              (idx % 2 === 0 ? "bg-base-3" : "")
+              (idx % 2 === 0 ? "" : "")
             }
           >
             <Button
@@ -118,7 +118,7 @@ const SelectionFooter = () => {
   return (
     <footer
       id="selectionFooter"
-      className="bottom-0 flex bg-base-3 p-1 sticky right-0 shadow-lg"
+      className="bottom-0 flex p-1 sticky right-0 shadow-lg"
       style={{ bottom: "var(--footer-height-clearance)" }}
     >
       <SelectedVideosModal
@@ -130,7 +130,7 @@ const SelectionFooter = () => {
       <Button
         variant="link"
         size="icon"
-        className={`h-6 self-start transition-all hover:text-primary-10 ${
+        className={`h-6 self-start transition-all hover: ${
           selectedVideos.length === 0 ? "w-20" : ""
         }`}
         onClick={exit}
@@ -228,7 +228,7 @@ export const SelectionMainPage = ({
             disabled={selectedVideos.length === 0}
             className="flex items-center"
           >
-            <span className="i-lucide:tag mr-2" />
+            <span className="mr-2 i-lucide:tag" />
             Modify Attributes
             <div className="i-lucide:chevron-up ml-2 size-4"></div>
           </Button>
@@ -261,7 +261,7 @@ export const SelectionMentionsPage = () => {
   return (
     <div className="flex w-full items-center justify-between">
       <nav className="flex items-center" aria-label="Breadcrumb">
-        <ol className="flex items-center space-x-2 px-2">
+        <ol className="flex items-center px-2 space-x-2">
           <li>
             <div
               onClick={() => setPage(0)}
@@ -271,7 +271,7 @@ export const SelectionMentionsPage = () => {
               Back
             </div>
           </li>
-          <li className="text-sm font-medium text-base-10">
+          <li className="text-sm font-medium">
             | Selected ({selectedVideos.length}) |
           </li>
           <li className="text-sm font-medium">Mentions</li>
@@ -312,7 +312,7 @@ export const SelectionSourcesPage = () => {
               Back
             </div>
           </li>
-          <li className="text-sm font-medium text-base-10">
+          <li className="text-sm font-medium">
             | Selected ({selectedVideos.length}) |
           </li>
           <li className="text-sm font-medium">Sources</li>
@@ -353,7 +353,7 @@ export const SelectionTopicPage = () => {
               Back
             </div>
           </li>
-          <li className="text-sm font-medium text-base-10">
+          <li className="text-sm font-medium">
             | Selected ({selectedVideos.length}) |
           </li>
           <li className="text-sm font-medium">Set Topic:</li>
@@ -422,7 +422,7 @@ function SelectionModifyPlaylistMenu({ disabled }: { disabled: boolean }) {
         </DropdownMenuItem>
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger className="bg-base-1">
+            <DropdownMenuSubTrigger className="">
               <div className="i-solar:playlist-broken" />
               Add to Playlist
             </DropdownMenuSubTrigger>

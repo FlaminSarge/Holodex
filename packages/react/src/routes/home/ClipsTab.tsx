@@ -49,8 +49,10 @@ export function ClipsTab() {
     return (
       <div className="gap-4 px-4 py-2 @container md:px-8">
         <div>No language selected</div>
-
-        <ClipLanguageSelector />
+        <div>
+          Select language:
+          <ClipLanguageSelector className="px-12 bg-primary hover:bg-primary/90" />
+        </div>
       </div>
     );
 

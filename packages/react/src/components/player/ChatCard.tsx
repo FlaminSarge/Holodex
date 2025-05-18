@@ -26,10 +26,10 @@ export function ChatCard({
     useStateList(CHAT_SIZES_ITER);
 
   return (
-    <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-base bg-base-3">
+    <div className="flex w-full overflow-hidden h-full flex-col rounded-lg border border-base">
       <Collapsible
         open={chatOpen}
-        className={cn("flex flex-col bg-base-3")}
+        className={cn("flex flex-col ")}
         style={{ flexGrow: chatOpen ? (tlOpen ? chatBasis : 1) : 0 }}
       >
         <CollapsibleTrigger asChild>
@@ -48,7 +48,7 @@ export function ChatCard({
               <Button
                 size="icon"
                 variant="ghost"
-                className="ml-auto hover:bg-primary-6"
+                className="hover: ml-auto"
                 onClick={(e) => {
                   e.stopPropagation();
                   nextChatBasis();

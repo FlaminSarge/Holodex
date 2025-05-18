@@ -24,7 +24,7 @@ export function CurrentVideoList({ currentId }: { currentId?: string }) {
   return (
     <Collapsible
       open={open}
-      className="flex flex-col gap-2 overflow-hidden rounded-lg border border-base bg-base-3 @container"
+      className="flex flex-col overflow-hidden rounded-lg border border-base gap-2 @container"
     >
       <CollapsibleTrigger asChild>
         <Button
@@ -35,7 +35,7 @@ export function CurrentVideoList({ currentId }: { currentId?: string }) {
         >
           <div className={open ? "i-heroicons:minus" : "i-heroicons:plus"} />
           {title}
-          <span className="ml-auto text-sm text-base-11">
+          <span className="ml-auto text-sm">
             {currentIdIdxInQueue ? currentIdIdxInQueue + " / " : ""}
             {videos.length} items
           </span>

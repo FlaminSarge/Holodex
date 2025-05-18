@@ -13,17 +13,22 @@ import {
 } from "@/shadcn/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shadcn/ui/popover";
 import { clipLanguageAtom, englishNameAtom } from "@/store/settings";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Checkbox } from "@/shadcn/ui/checkbox";
 import { Label } from "@/shadcn/ui/label";
+import { localeAtom } from "@/store/i18n";
+import { VideoCardCountdownToLive } from "@/components/video/VideoCardCountdownToLive";
 
 export function SettingsLang() {
   const [clipLangs, setClipLangs] = useAtom(clipLanguageAtom);
   const [langOpen, setLangOpen] = useState(false);
   const { i18n, t } = useTranslation();
   const [useENName, setUseENName] = useAtom(englishNameAtom);
+  const { dayjs } = useAtomValue(localeAtom);
+
+  const tick = dayjs().add(5, "h");
 
   return (
     <div className="flex flex-col space-y-6">
@@ -36,14 +41,14 @@ export function SettingsLang() {
                 role="combobox"
                 aria-expanded={langOpen}
                 className={cn(
-                  "inline-flex min-h-8 w-full min-w-48 items-center justify-between rounded-md bg-base-3 py-1 pl-4 pr-2",
-                  "text-left text-lg font-medium text-base-12 transition",
-                  "hover:bg-primary-5 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary-7 active:scale-[97%] active:bg-primaryA-7 disabled:pointer-events-none disabled:opacity-50",
-                  langOpen && "bg-base-4 ring-2 ring-primary-9 hover:bg-base-5",
+                  "inline-flex min-h-8 w-full min-w-48 items-center justify-between rounded-md  py-1 pl-4 pr-2",
+                  "text-left text-lg font-medium  transition",
+                  "hover: focus-visible:outline-hidden focus-visible:ring-1 focus-visible: active:scale-[97%] active: disabled:pointer-events-none disabled:opacity-50",
+                  langOpen && " ring-2  hover:",
                 )}
               >
                 {langs.find(({ val }) => i18n.language === val)?.display}
-                <div className="ml-2 h-4 w-4 shrink-0 opacity-50 i-lucide:chevrons-up-down" />
+                <div className="h-4 w-4 shrink-0 ml-2 opacity-50 i-lucide:chevrons-up-down" />
               </button>
             </PopoverTrigger>
             <PopoverContent className="p-0 w-fit min-w-[240px]">
@@ -79,7 +84,7 @@ export function SettingsLang() {
             </PopoverContent>
           </Popover>
           {/* Translation Credits */}
-          <div className="flex items-center gap-1 text-xs text-base-11">
+          <div className="flex items-center gap-1 text-xs">
             <div className="i-heroicons:heart" />
             {langs.find(({ val }) => i18n.language === val)?.credit}
           </div>
@@ -139,6 +144,24 @@ export function SettingsLang() {
       {/* Regional Settings */}
       <SettingsItem label={t("views.settings.showTimezonesOnHover")} fullWidth>
         <TimezoneSelector />
+        <span>
+          <b>Example: </b>
+          <VideoCardCountdownToLive
+            video={{
+              id: "example",
+              type: "placeholder",
+              status: "upcoming",
+              available_at: tick.toDate(),
+              start_scheduled: tick.toISOString(),
+              title: "",
+              channel: {
+                id: "example",
+                name: "",
+                type: "vtuber",
+              },
+            }}
+          />
+        </span>
       </SettingsItem>
     </div>
   );

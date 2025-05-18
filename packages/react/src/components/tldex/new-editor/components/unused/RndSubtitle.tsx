@@ -92,11 +92,11 @@
 //       onDragStop={handleDrag}
 //       onResize={handleResize}
 //       bounds="parent"
-//       className="border border-x-2 border-primary-9"
+//       className="border border-x-2 "
 //       enableResizing={{ left: true, right: true }}
 //     >
 //       <div
-//         className="h-full w-full cursor-move text-wrap bg-base-3 text-base-12 opacity-80 bg-blend-multiply"
+//         className="h-full w-full cursor-move text-wrap   opacity-80 bg-blend-multiply"
 //         title={subtitle.message}
 //       >
 //         <span className="truncate text-xs text-white">{subtitle.message}</span>

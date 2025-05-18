@@ -28,7 +28,7 @@ export function PlayerRecommendations({
   const { t } = useTranslation();
 
   return (
-    <div className="flex w-full flex-col gap-4 @container">
+    <div className="flex w-full flex-col @container gap-4">
       {simulcasts && (
         <RecommendationCollapsible
           label={t("component.relatedVideo.simulcastsLabel")}
@@ -99,7 +99,7 @@ function RecommendationCollapsible({
   return (
     <Collapsible
       open={open}
-      className="overflow-hidden rounded-lg border border-base bg-base-3"
+      className="overflow-hidden rounded-lg border border-base"
     >
       <CollapsibleTrigger asChild>
         <Button
@@ -114,7 +114,7 @@ function RecommendationCollapsible({
           <span>{Children.count(children)}</span>
         </Button>
       </CollapsibleTrigger>
-      <CollapsibleContent className="bg-base-2">{children}</CollapsibleContent>
+      <CollapsibleContent className="">{children}</CollapsibleContent>
     </Collapsible>
   );
 }

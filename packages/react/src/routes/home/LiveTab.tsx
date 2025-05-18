@@ -46,7 +46,7 @@ export function LiveTab() {
           videos={nowLiveSorted}
         />
         {!liveLoading && nowLiveSorted.length == 0 && <EmptyQuip />}
-        <Separator className="mb-4 mt-2 w-full border-base-3 lg:mb-6 lg:mt-4" />
+        <Separator className="mb-4 mt-2 w-full lg:mb-6 lg:mt-4" />
         <MainVideoListing
           isLoading={liveLoading}
           size={cardSize}

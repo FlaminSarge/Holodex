@@ -57,7 +57,7 @@ export function SongSearch({
           ref={buttonRef}
           role="combobox"
           aria-expanded={open}
-          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border border-base px-4 hover:bg-base-4 min-h-12 py-2"
+          className="flex w-full cursor-pointer items-center justify-center gap-2 border border-base px-4 rounded-md min-h-12 py-2"
         >
           {value ? (
             <SongItem {...value} />
@@ -67,7 +67,7 @@ export function SongSearch({
           {value && (
             <Button
               size="icon"
-              variant="ghost-secondary"
+              variant="ghost"
               className="ml-auto text-red-11"
               onClick={() => onSelect()}
             >
@@ -139,7 +139,7 @@ function SongItem({
       <img className="h-10 w-10 rounded-sm" src={artworkUrl100} />
       <div className="flex flex-col">
         <span className="font-bold">{trackName}</span>
-        <span className="text-xs text-base-11">
+        <span className="text-xs">
           {artistName} / {collectionName} /{" "}
           {dayjs(releaseDate).format("YYYY-MM")}
         </span>

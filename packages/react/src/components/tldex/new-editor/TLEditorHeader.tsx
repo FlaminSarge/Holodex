@@ -43,9 +43,7 @@ export function TLEditorHeader({
               <MenubarShortcut>Ctrl-S</MenubarShortcut>
             </MenubarItem>
             <MenubarSeparator />
-            <MenubarLabel className="text-base-10">
-              SRT Subtitle File
-            </MenubarLabel>
+            <MenubarLabel className="">SRT Subtitle File</MenubarLabel>
             <MenubarItem>{t("views.scriptEditor.menu.importFile")}</MenubarItem>
             <MenubarItem>{t("views.scriptEditor.menu.exportFile")}</MenubarItem>
           </MenubarContent>

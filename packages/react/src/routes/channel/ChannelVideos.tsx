@@ -15,7 +15,7 @@ export default function ChannelVideos({ type }: { type: ChannelVideoType }) {
   } = useChannelVideos(id, type);
 
   return (
-    <div className="container p-4 md:px-8">
+    <div className="container mx-auto p-4 md:px-8">
       <MainVideoListing
         isLoading={isPending}
         fetchNextPage={fetchNextPage}

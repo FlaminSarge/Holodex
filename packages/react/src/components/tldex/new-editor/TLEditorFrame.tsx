@@ -141,7 +141,7 @@ export function TLEditorContent() {
             </div>
           </div>
         </Panel>
-        <PanelResizeHandle className="w-2 hover:bg-base-4" />
+        <PanelResizeHandle className="w-2 hover:" />
         <Panel defaultSize={40} minSize={20}>
           <SubtitleList />
         </Panel>

@@ -12,7 +12,7 @@ export function EmptyQuip() {
   if (!emptyTranslations) return null;
 
   return (
-    <div className="p-4 text-base-11 md:px-8">
+    <div className="p-4 md:px-8 text-muted-foreground">
       {emptyTranslations[randN % emptyTranslations.length]}
     </div>
   );

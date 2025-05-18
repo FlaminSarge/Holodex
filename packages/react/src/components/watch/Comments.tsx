@@ -36,7 +36,7 @@ const TruncatedText = ({ text }: TruncatedTextProps) => {
       {isClamped && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-xs text-base-11 mt-1 hover:text-base-12"
+          className="text-xs hover: mt-1"
         >
           {expanded ? "Show less" : "Read more"}
         </button>
@@ -54,7 +54,7 @@ const parseTimestamps = (message: string, videoId: string) => {
     /(?:([0-5]?[0-9]):)?([0-5]?[0-9]):([0-5][0-9])/gm,
     (match, hr, min, sec) => {
       const seconds = Number(hr ?? 0) * 3600 + Number(min) * 60 + Number(sec);
-      return `<a href="/watch/${videoId}?t=${seconds}" data-time="${seconds}" class="inline-block rounded px-1 text-primary-11 hover:bg-primary hover:text-primary-12">${match}</a>`;
+      return `<a href="/watch/${videoId}?t=${seconds}" data-time="${seconds}" class="inline-block rounded px-1  hover:bg-primary hover:">${match}</a>`;
     },
   );
 };
@@ -72,13 +72,13 @@ const Comment = ({
   );
 
   return (
-    <div className="group relative border-l-2 border-base-6 px-4 py-1 my-3 min-h-0">
+    <div className="group relative border-l-2 px-4 py-1 my-3 min-h-0">
       <TruncatedText text={parsedMessage} />
       <a
         href={`https://www.youtube.com/watch?v=${videoId}&lc=${comment.comment_key}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute top-0 hidden text-base-11 hover:text-base-12 right-0 group-hover:block"
+        className="absolute top-0 hidden hover: right-0 group-hover:block"
       >
         <ExternalLink className="h-4 w-4" />
       </a>

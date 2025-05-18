@@ -37,30 +37,26 @@ export function SettingsUser() {
       <div className="my-4 flex items-center gap-6">
         <div className="flex flex-col items-center">
           <img
-            className="h-24 w-24 rounded-full"
+            className="w-24 rounded-full h-24"
             src={`https://api.dicebear.com/7.x/shapes/svg?seed=${user.id}`}
           />
           <Badge className="-mt-2">{user.role}</Badge>
         </div>
         <div className="flex flex-col gap-2">
-          <div className="text-2xl font-bold md:text-4xl">{user.username}</div>
-          <div className="capitalize text-base-11">
+          <div className="font-bold text-2xl md:text-4xl">{user.username}</div>
+          <div className="capitalize">
             {user.contribution_count}
             {t("component.mainNav.points")}
           </div>
           <div className="flex flex-wrap gap-2 text-sm">
-            <Badge className="border-base text-base-11" variant="outline">
+            <Badge className="border-base" variant="outline">
               <kbd className="font-bold">#{user.id}</kbd>
             </Badge>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
                   <Badge
-                    className={
-                      user.discord_id
-                        ? "border-secondary-8 text-secondary-11"
-                        : "border-base text-base-11"
-                    }
+                    className={user.discord_id ? " " : "border-base "}
                     variant="outline"
                   >
                     <div className="md:mr-1 i-carbon:logo-discord" />
@@ -76,11 +72,7 @@ export function SettingsUser() {
               <Tooltip>
                 <TooltipTrigger>
                   <Badge
-                    className={
-                      user.google_id
-                        ? "border-secondary-8 text-secondary-11"
-                        : "border-base text-base-11"
-                    }
+                    className={user.google_id ? " " : "border-base "}
                     variant="outline"
                   >
                     <div className="md:mr-1 i-mdi:google" />
@@ -96,11 +88,7 @@ export function SettingsUser() {
               <Tooltip>
                 <TooltipTrigger>
                   <Badge
-                    className={
-                      user.twitter_id
-                        ? "border-secondary-6 text-secondary-11"
-                        : "border-base text-base-11"
-                    }
+                    className={user.twitter_id ? " " : "border-base "}
                     variant="outline"
                   >
                     <div className="md:mr-1 i-mdi:twitter" />
@@ -154,7 +142,7 @@ export function SettingsUser() {
       {/* <SettingsItem label={t("views.login.ownedYtChannel")}>
         <div className="ml-auto flex max-w-md flex-col gap-2">
           <Input className="ml-auto max-w-md" value="None on file" disabled />
-          <span className="text-xs text-base-11">
+          <span className="text-xs ">
             {t("views.login.futureYtcOwnerMessage")}
           </span>
         </div>

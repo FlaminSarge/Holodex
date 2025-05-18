@@ -23,10 +23,7 @@ export function MiniPlayer() {
         >
           {currentVideo?.title}
         </Link>
-        <Link
-          to={`/channel/${currentVideo?.channel?.id}`}
-          className="text-sm text-base-11"
-        >
+        <Link to={`/channel/${currentVideo?.channel?.id}`} className="text-sm">
           {currentVideo?.channel?.name}
         </Link>
       </div>

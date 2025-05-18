@@ -38,24 +38,18 @@ const ToggleableFeatureSetting = (props: ToggleableFeatureProps) => {
         <div
           className={cn(
             "flex h-10 w-10 items-center justify-center rounded-lg",
-            checked ? "bg-primary-4" : "bg-base-4",
+            checked ? "" : "",
           )}
         >
-          <div
-            className={cn(
-              icon,
-              "h-5 w-5",
-              checked ? "text-primary-11" : "text-base-11",
-            )}
-          />
+          <div className={cn(icon, "h-5 w-5", checked ? "" : "")} />
         </div>
         <Label
           htmlFor={id}
           className={cn(
             "flex grow cursor-pointer items-center gap-1 self-stretch",
             {
-              "text-primary-11": checked,
-              "text-base-11": !checked,
+              x: checked,
+              "": !checked,
             },
           )}
         >
@@ -108,7 +102,7 @@ export const ToggleableFeatureGroup = ({
         <React.Fragment key={feature.id}>
           <ToggleableFeatureSetting {...feature} />
           {showDividers && index < features.length - 1 && (
-            <div className="bg-base-6 h-px -mb-px" />
+            <div className="h-px -mb-px" />
           )}
         </React.Fragment>
       ))}

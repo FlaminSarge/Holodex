@@ -85,21 +85,19 @@ export const SettingsTheme = () => {
       <SettingsItem label={t("views.settings.theme")} fullWidth>
         <div className="flex items-center justify-between">
           <div
-            className="flex grow cursor-pointer items-center gap-3"
+            className="flex cursor-pointer items-center grow gap-3"
             onClick={() => setDark(!dark)}
           >
             <div
               className={cn(
                 "flex h-10 w-10 items-center justify-center rounded-full",
-                dark ? "bg-base-5" : "bg-primary-4",
+                dark ? "" : "",
               )}
             >
               <div
                 className={cn(
                   "h-5 w-5",
-                  dark
-                    ? "i-heroicons:moon text-primary-11"
-                    : "i-heroicons:sun text-primary-11",
+                  dark ? "i-heroicons:moon " : "i-heroicons:sun ",
                 )}
               />
             </div>
@@ -107,7 +105,7 @@ export const SettingsTheme = () => {
               <span className="font-medium">
                 {dark ? "Dark Mode" : "Light Mode"}
               </span>
-              <span className="text-sm text-base-11">
+              <span className="text-sm">
                 {dark ? "Easier on the eyes" : "Better contrast"}
               </span>
             </div>
@@ -116,10 +114,7 @@ export const SettingsTheme = () => {
             variant="base-outline"
             size="lg"
             onClick={() => setDark(!dark)}
-            className={cn(
-              "h-10 w-24 p-0 text-primary-12 transition-colors",
-              dark ? "bg-base-4" : "bg-primary-4",
-            )}
+            className={cn("h-10 w-24 p-0  transition-colors", dark ? "" : "")}
           >
             <div
               className={cn(
@@ -178,17 +173,14 @@ const ColorPickerRow = ({
       />
       <div className="flex flex-col">
         <span className="font-medium">{label}</span>
-        <span className="text-sm capitalize text-base-11">{value}</span>
+        <span className="text-sm capitalize">{value}</span>
       </div>
     </div>
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="base-outline"
-          className="h-10 justify-between w-24 bg-base-4"
-        >
+        <Button variant="base-outline" className="h-10 justify-between w-24">
           <div
-            className="h-4 w-4 rounded-full"
+            className="rounded-full h-4 w-4"
             style={{ backgroundColor: `var(--${value}-9)` }}
           />
           <div className="h-4 w-4 opacity-60 i-lucide:chevron-down" />
@@ -201,11 +193,11 @@ const ColorPickerRow = ({
           {options.map((color) => (
             <DropdownMenuItem
               key={color}
-              className="flex h-10 w-10 items-center justify-center p-0 hover:bg-base-4"
+              className="flex h-10 w-10 items-center hover: justify-center p-0"
               onSelect={() => onChange(color)}
             >
               <div
-                className="h-6 w-6 rounded-full transition-transform hover:scale-110"
+                className="rounded-full h-6 w-6 transition-transform hover:scale-110"
                 style={{ backgroundColor: `var(--${color}-9)` }}
               />
             </DropdownMenuItem>

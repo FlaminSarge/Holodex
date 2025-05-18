@@ -44,7 +44,7 @@ export function Header({ id }: HeaderProps) {
           size="icon"
           variant="link"
           className={clsx(
-            "h-12 w-12 p-0 opacity-100 transition-all starting:opacity-0 starting:-translate-y-6  duration-1000 hover:bg-secondaryA-2",
+            "h-12 w-12 p-0 opacity-100 transition-all starting:opacity-0 starting:-translate-y-6  duration-1000 hover:",
             isSidebarOpen && "hidden",
           )}
           asChild
@@ -67,7 +67,7 @@ export function Header({ id }: HeaderProps) {
                 <Button
                   size="icon"
                   variant="ghost"
-                  className="ml-2 text-lg text-base-10"
+                  className="ml-2 text-lg"
                   onClick={() => setIsSearching(false)}
                 >
                   <div className="h-8 w-8 i-lucide:x" />
@@ -77,7 +77,7 @@ export function Header({ id }: HeaderProps) {
               <Button
                 size="icon"
                 variant="ghost"
-                className="ml-auto h-12 w-12 text-xl text-base-10"
+                className="ml-auto h-12 w-12 text-xl"
                 onClick={() => setIsSearching(true)}
               >
                 <div className="h-8 w-8 i-heroicons:magnifying-glass" />

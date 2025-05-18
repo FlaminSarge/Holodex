@@ -29,7 +29,7 @@ const toggleClipLanguageAtom = atom(
   },
 );
 
-export const ClipLanguageSelector: React.FC = () => {
+export const ClipLanguageSelector = ({ className }: { className?: string }) => {
   const [selectedLangs] = useAtom(clipLanguageAtom);
   const toggleLanguage = useSetAtom(toggleClipLanguageAtom);
   const [open, setOpen] = React.useState(false);
@@ -44,6 +44,7 @@ export const ClipLanguageSelector: React.FC = () => {
           size="icon-lg"
           aria-expanded={open}
           title={t("views.settings.clipLanguageSelection")}
+          className={className}
         >
           <div className="relative h-6 w-6">
             <div className="absolute h-full w-full text-xl i-tabler:language-hiragana" />
@@ -62,7 +63,7 @@ export const ClipLanguageSelector: React.FC = () => {
             <CommandGroup heading={t("views.settings.clipLanguageSelection")}>
               <CommandItem disabled className="p-0">
                 {selectedLangs.length > 0 && (
-                  <div className="mb-1 flex w-full flex-wrap gap-1 border-base-5 p-2 pt-0 border-b">
+                  <div className="mb-1 flex w-full flex-wrap gap-1 p-2 pt-0 border-b">
                     {selectedLangs.map((langValue) => {
                       const lang = CLIPPER_LANGS.find(
                         (l) => l.value === langValue,

@@ -48,25 +48,68 @@ export function ErrorFallback({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
+  const clearServiceWorkerCache = function () {
+    // Check if service workers are supported
+    if ("serviceWorker" in navigator) {
+      // First, get all the cache names
+      caches
+        .keys()
+        .then((cacheNames) => {
+          // Delete all caches
+          return Promise.all(
+            cacheNames.map((cacheName) => {
+              console.log(`Deleting cache: ${cacheName}`);
+              return caches.delete(cacheName);
+            }),
+          );
+        })
+        .then(() => {
+          console.log("All caches cleared");
+
+          // Now unregister all service workers
+          return navigator.serviceWorker.getRegistrations();
+        })
+        .then((registrations) => {
+          // Unregister each service worker
+          return Promise.all(
+            registrations.map((registration) => {
+              console.log("Unregistering service worker");
+              return registration.unregister();
+            }),
+          );
+        })
+        .then(() => {
+          console.log("Service workers unregistered");
+          // Optionally reload the page to ensure a clean state
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error("Cache clearing failed:", error);
+        });
+    } else {
+      console.log("Service workers are not supported in this browser");
+    }
+  };
+
   return (
     <div className="p-4 sm:p-8">
-      <Card className="mx-auto max-w-2xl bg-base-4">
+      <Card className="mx-auto max-w-2xl">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-secondary">
+          <CardTitle className="text-3xl font-bold">
             {t("component.apiError.title")}
           </CardTitle>
         </CardHeader>
 
         <CardContent className="space-y-4">
           <Alert>
-            <AlertDescription className="text-center text-base">
+            <AlertDescription className="text-center block">
               <Trans
                 i18nKey="component.apiError.text"
                 components={{
                   twitter: (
                     <a
                       key="twitterlink"
-                      className="font-medium text-primary hover:underline"
+                      className="font-medium inline text-primary-foreground hover:underline"
                       href="https://x.com/holodex"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -74,7 +117,7 @@ export function ErrorFallback({
                   ),
                   discord: (
                     <a
-                      className="font-medium text-primary hover:underline"
+                      className="font-medium inline text-primary-foreground hover:underline"
                       href="https://discord.gg/jctkgHBt4b"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -97,10 +140,11 @@ export function ErrorFallback({
             </Button>
             <Button
               size="lg"
-              variant="ghost-secondary"
+              variant="ghost"
               onClick={() => {
                 logout();
                 window.localStorage.clear();
+                clearServiceWorkerCache();
                 window.location.assign("/");
               }}
               className="gap-2"
@@ -115,7 +159,7 @@ export function ErrorFallback({
             onOpenChange={setIsDebugOpen}
             className=""
           >
-            <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg border-base-6 p-4 font-medium border hover:bg-muted">
+            <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg p-4 font-medium border hover:bg-muted">
               Debug Information
               <div
                 className={`i-lucide:chevron-down h-4 w-4 transition-transform duration-200 ${
@@ -124,11 +168,11 @@ export function ErrorFallback({
               />
             </CollapsibleTrigger>
             <CollapsibleContent className="">
-              <code className="w-full rounded-lg px-4 my-2 bg-muted/50 block overflow-x-auto">
+              <code className="w-full rounded-lg px-4 my-2 block bg-muted/50 overflow-x-auto whitespace-pre-wrap">
                 {error?.message}
               </code>
               <code className="bg-muted/50 block w-full overflow-x-auto rounded-lg px-4 text-xs">
-                {error?.stack}
+                {error?.stack?.split("\n").slice(0, 6).join("\n")}
               </code>
             </CollapsibleContent>
           </Collapsible>
@@ -138,9 +182,7 @@ export function ErrorFallback({
           </div>
         </CardContent>
 
-        <CardFooter className="justify-center text-sm text-base-8">
-          © Holodex
-        </CardFooter>
+        <CardFooter className="justify-center text-sm">© Holodex</CardFooter>
       </Card>
     </div>
   );

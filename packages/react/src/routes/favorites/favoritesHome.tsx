@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useFavoriteLive } from "@/services/live.service";
 import { MainVideoListing } from "@/components/video/MainVideoListing";
 import { useVideoCardSizes } from "@/store/video";
@@ -16,8 +16,6 @@ import { EmptyQuip } from "../home/EmptyQuip";
 import { useVideoSort } from "@/hooks/useVideoSort";
 
 export function FavoritesLive() {
-  const { t } = useTranslation();
-  const [randN] = useState(Math.floor(Math.random() * 100));
   const { size: cardSize } = useVideoCardSizes(["list", "md", "lg"]);
 
   const {
@@ -50,7 +48,7 @@ export function FavoritesLive() {
           videos={nowLiveSorted}
         />
         {!liveLoading && nowLiveSorted.length == 0 && <EmptyQuip />}
-        <Separator className="mb-4 mt-2 w-full border-base-3 lg:mb-6 lg:mt-4" />
+        <Separator className="mb-4 mt-2 w-full lg:mb-6 lg:mt-4" />
         <MainVideoListing
           isLoading={liveLoading}
           size={cardSize}

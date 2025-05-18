@@ -32,7 +32,7 @@ export function Controlbar({ video, url }: ControlbarProps) {
   return (
     <div className="">
       <HighlightBar video={video} />
-      <div className="flex shrink-0 items-center gap-0 overflow-x-auto px-4 pb-2 text-base-11 @screen-lg:gap-2">
+      <div className="flex shrink-0 items-center gap-0 overflow-x-auto px-4 pb-2 @screen-lg:gap-2">
         <Button
           className="flex shrink-0 @screen-md:hidden"
           size="icon"

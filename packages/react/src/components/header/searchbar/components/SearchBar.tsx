@@ -1,8 +1,9 @@
-import { CommandList, Command as CommandPrimitive } from "cmdk";
+import { Command as CommandPrimitive } from "cmdk";
 import {
   Command,
   CommandGroup,
   CommandItem,
+  CommandList,
   CommandShortcut,
 } from "@/shadcn/ui/command";
 import { cn } from "@/lib/utils";
@@ -119,7 +120,7 @@ export function SearchBar({
         }}
       >
         <PopoverTrigger asChild>
-          <div className="group rounded-md p-2 text-sm ring-offset-base-2 focus-within:ring-2 hover:bg-base-3 bg-base-2 focus-within:bg-base-3 focus-within:ring-primary focus-within:ring-offset-2">
+          <div className="rounded-md p-2 text-sm focus-within:ring-2 focus-within: ring-offset-muted bg-input group focus-within:ring-primary focus-within:ring-offset-1">
             <label className="flex flex-wrap items-center gap-1">
               {queryPieces.map((queryItem, i) => {
                 return (
@@ -141,18 +142,20 @@ export function SearchBar({
                 onBlur={() => setOpen(false)}
                 onFocus={() => setOpen(true)}
                 placeholder={t("component.search.searchLabel")}
-                className="ml-2 outline-hidden flex-1 bg-transparent placeholder:text-base-8"
+                className="ml-2 outline-hidden flex-1 bg-transparent placeholder:text-muted-foreground"
               />
               <div className="ml-auto flex flex-row opacity-0 group-focus-within:opacity-100">
                 {query.length > 0 && (
                   <CommandShortcut className="pointer-events-none opacity-80">
-                    {/* <span className="mr-1 rounded-sm bg-base-4 p-0.5">⇪</span> */}
-                    <span className="rounded-sm bg-base-4 p-0.5">↵</span>
+                    {/* <span className="mr-1 rounded-sm  p-0.5">⇪</span> */}
+                    <span className="rounded-sm text-muted-foreground p-0.5">
+                      ↵
+                    </span>
                   </CommandShortcut>
                 )}
                 <button
                   type="submit"
-                  className="flex items-center rounded-md text-base-11 transition-all size-8 -my-2 -mr-1 hover:bg-base-5 hover:text-primary-11"
+                  className="flex items-center rounded-md transition-all hover: hover: size-8 -my-2 -mr-1"
                   disabled={query.length === 0}
                   onClick={() => doSearch()}
                   onSubmit={() => doSearch()}
@@ -177,24 +180,22 @@ export function SearchBar({
               maxHeight: "var(--radix-popover-content-available-height)",
             }}
           >
-            <CommandList>
+            <CommandList className="">
               <div
-                className="min-w-80 rounded-md border border-base bg-base-2 text-base-11 outline-hidden animate-in fade-in-20 slide-in-from-top-2 sm:left-auto sm:w-full"
+                className="min-w-80 rounded-md bg-input border border-base outline-hidden animate-in fade-in-20 slide-in-from-top-2 sm:left-auto sm:w-full"
                 style={{
                   boxShadow:
                     "0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4)",
                 }}
               >
                 <CommandGroup
-                  className="h-full overflow-auto"
+                  className="h-full text-foreground/80"
                   heading={
-                    <div>
+                    <div className="text-muted-foreground">
                       {t("search.options_menu_header")}
                       <span className="float-right">
                         <CommandShortcut className="pointer-events-none opacity-80">
-                          <span className="mr-1 rounded-sm bg-base-4 p-0.5">
-                            ↕
-                          </span>
+                          <span className="mr-1 rounded-sm p-0.5">↕</span>
                         </CommandShortcut>
                       </span>
                     </div>

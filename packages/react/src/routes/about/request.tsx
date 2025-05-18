@@ -4,6 +4,7 @@ import { AddVtuberForm } from "@/components/about/request/AddVtuber";
 import { DeleteChannelForm } from "@/components/about/request/DeleteChannel";
 import { ModifyInfoForm } from "@/components/about/request/ModifyInfo";
 import { cn } from "@/lib/utils";
+import { Card, CardContent } from "@/shadcn/ui/card";
 import { Label } from "@/shadcn/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/shadcn/ui/radio-group";
 import { ReactNode, useState } from "react";
@@ -14,7 +15,7 @@ export function AboutRequest() {
   const [type, setType] = useState("");
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex gap-2 flex-col">
       <AboutHeading>{t("channelRequest.RequestType")}</AboutHeading>
       <RadioGroup className="flex flex-col gap-2" onValueChange={setType}>
         <RadioGroupItem value="addVtuber" className="sr-only" id="addVtuber" />
@@ -47,10 +48,14 @@ export function AboutRequest() {
         </Label>
       </RadioGroup>
       <div>{/* Making some space  */}</div>
-      {type === "addVtuber" && <AddVtuberForm />}
-      {type === "addSubber" && <AddSubberForm />}
-      {type === "modifyInfo" && <ModifyInfoForm />}
-      {type === "delete" && <DeleteChannelForm />}
+      <Card>
+        <CardContent>
+          {type === "addVtuber" && <AddVtuberForm />}
+          {type === "addSubber" && <AddSubberForm />}
+          {type === "modifyInfo" && <ModifyInfoForm />}
+          {type === "delete" && <DeleteChannelForm />}
+        </CardContent>
+      </Card>
     </div>
   );
 }
@@ -67,7 +72,7 @@ function RequestTypeRadioButton({
       className={cn(
         "w-full cursor-pointer rounded-md border-2 border-primary p-4 transition-colors",
         {
-          "bg-primary-6 border-primary-8": isSelected,
+          " ": isSelected,
         },
       )}
     >

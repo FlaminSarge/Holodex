@@ -119,7 +119,7 @@
 
 //   return (
 //     <div className="space-y-4">
-//       <div className="rounded border border-base-6">
+//       <div className="rounded border ">
 //         <TimelineComponent
 //           alignments={alignments}
 //           duration={30}

@@ -4,12 +4,10 @@
   /* TODO: there was some text colors here */
 }
 
-.video-menu-item div:first-child,
-.video-menu-item svg:first-child {
+.video-menu-item>* {
   /* TODO: there was some text colors here */
 }
 
-.video-menu-item:hover div:first-child,
-.video-menu-item:hover svg:first-child {
+.video-menu-item:hover>* {
   /* TODO: there was some text colors here */
 }

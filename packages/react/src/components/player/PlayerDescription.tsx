@@ -15,14 +15,14 @@ export function PlayerDescription({
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
   return (
-    <div className="flex flex-col gap-2 rounded-lg bg-base-3 p-4">
+    <div className="flex flex-col gap-2 rounded-lg p-4">
       <div
         className={cn("whitespace-pre-wrap break-all text-sm", {
           "line-clamp-3": !isExpanded,
         })}
       >
-        <LinkItUrl className="text-primary underline hover:text-primary-12">
-          <LinkItTwitter className="text-primary underline hover:text-primary-12">
+        <LinkItUrl className="hover: underline text-primary">
+          <LinkItTwitter className="text-primary underline hover:">
             {description}
           </LinkItTwitter>
         </LinkItUrl>

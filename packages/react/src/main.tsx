@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { HelmetProvider } from "@dr.pogodin/react-helmet";
-import "./index.css";
+import "./pure.css";
 import "./colors.css";
 import "uno.css";
 import { QueryClientProvider } from "@tanstack/react-query";

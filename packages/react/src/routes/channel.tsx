@@ -38,6 +38,20 @@ export function Channel() {
 
   const preferredName = usePreferredName(channel ?? {});
 
+  const getActiveTab = () => {
+    const path = location.pathname;
+    const channelBasePath = `/channel/${channelId}`;
+
+    // If we're at the exact channel base path - it's the videos tab (index route)
+    if (path === channelBasePath) {
+      return "";
+    }
+
+    // For other routes, get the last segment
+    const segments = path.split("/");
+    return segments[segments.length - 1];
+  };
+
   if (!channelId || !channel) return <Loading size="md" />;
 
   return (
@@ -47,67 +61,68 @@ export function Channel() {
       </Helmet>
       <div className="w-full">
         <img
-          className=""
+          className="w-full"
           src={
             channel?.banner
               ? getChannelBannerImages(channel?.banner).banner
               : ""
           }
         />
-        <Tabs
-          value={location.pathname.split("/").at(-1)}
-          onValueChange={(tab) =>
-            tab !== "music" && navigate(`/channel/${channel?.id}/${tab}`)
-          }
-        >
-          <div className="sticky top-0 flex flex-col gap-2 border-b bg-base-3 pt-4 shadow-lg z-20 border-b-base-5 md:gap-6">
-            <div className="container flex items-start gap-4 px-4 md:px-8 max-sm:flex-col md:items-center">
-              <div className="flex items-center gap-4">
-                <ChannelImg
-                  className="size-16 md:size-24"
-                  channelId={channel?.id}
-                />
-                <div className="flex flex-col overflow-hidden">
-                  <div className="text-xs text-base-11">
-                    {channel?.org}
-                    {channel?.group && ` / ${channel?.group}`}
-                  </div>
-                  <div className="line-clamp-1 text-lg font-bold">
-                    {preferredName}
-                  </div>
-                  <div className="text-sm text-base-11">
-                    {t("component.channelInfo.subscriberCount", {
-                      n: formatCount(channel?.subscriber_count ?? "0"),
-                    })}
-                    {/* {` / ${t("component.channelInfo.videoCount", {
+        <div className="flex flex-col gap-2 sticky top-0 bg-card border-b pt-4 shadow-lg z-20 border-b-base-5">
+          <div className="mx-auto flex gap-4 container items-start px-4 md:px-8 max-sm:flex-col md:items-center">
+            <div className="flex gap-4 items-center">
+              <ChannelImg
+                className="size-16 md:size-24"
+                channelId={channel?.id}
+              />
+              <div className="flex flex-col overflow-hidden">
+                <div className="text-xs text-muted-foreground">
+                  {channel?.org}
+                  {channel?.group && ` / ${channel?.group}`}
+                </div>
+                <div className="font-bold line-clamp-1 text-lg">
+                  {preferredName}
+                </div>
+                <div className="text-muted-foreground text-sm">
+                  {t("component.channelInfo.subscriberCount", {
+                    n: formatCount(channel?.subscriber_count ?? "0"),
+                  })}
+                  {/* {` / ${t("component.channelInfo.videoCount", {
                       0: channel?.video_count ?? "0",
-                    })}`}
-                    {` / ${t("component.channelInfo.clipCount", {
-                      n: channel?.clip_count ?? "0",
-                    })}`} */}
-                  </div>
-                  <div className="mt-1 flex max-w-full gap-1 overflow-x-auto">
-                    {channel?.top_topics?.map((topic) => (
-                      <TopicBadge
-                        key={topic}
-                        size="sm"
-                        topic={topic}
-                        className="capitalize text-base-10 border-base-7"
-                      />
-                    ))}
-                  </div>
+                      })}`}
+                      {` / ${t("component.channelInfo.clipCount", {
+                        n: channel?.clip_count ?? "0",
+                        })}`} */}
+                </div>
+                <div className="flex mt-1 max-w-full gap-1 overflow-x-auto">
+                  {channel?.top_topics?.map((topic) => (
+                    <TopicBadge
+                      key={topic}
+                      size="sm"
+                      topic={topic}
+                      className="capitalize"
+                    />
+                  ))}
                 </div>
               </div>
-              <div className="w-full md:ml-auto md:w-fit">
-                <ChannelSocials
-                  size="lg"
-                  id={channel?.id}
-                  twitter={channel?.twitter}
-                  twitch={channel?.twitch}
-                />
-              </div>
             </div>
-            <TabsList className="container justify-start overflow-x-auto md:px-8 bg-transparent">
+            <div className="w-full md:ml-auto md:w-fit">
+              <ChannelSocials
+                size="lg"
+                id={channel?.id}
+                twitter={channel?.twitter}
+                twitch={channel?.twitch}
+              />
+            </div>
+          </div>
+
+          <Tabs
+            value={getActiveTab()}
+            onValueChange={(tab) =>
+              tab !== "music" && navigate(`/channel/${channel?.id}/${tab}`)
+            }
+          >
+            <TabsList className="container mx-auto overflow-x-auto md:px-8 bg-transparent">
               <TabsTrigger value="">{t("views.channel.video")}</TabsTrigger>
               <TabsTrigger value="clips">
                 {t("views.channel.clips")}
@@ -128,11 +143,11 @@ export function Channel() {
                 {t("views.channel.about")}
               </TabsTrigger>
             </TabsList>
-          </div>
-          <Outlet
-            context={{ id: channelId, channel } satisfies ChannelOutletContext}
-          />
-        </Tabs>
+          </Tabs>
+        </div>
+        <Outlet
+          context={{ id: channelId, channel } satisfies ChannelOutletContext}
+        />
       </div>
     </>
   );

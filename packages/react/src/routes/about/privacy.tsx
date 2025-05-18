@@ -30,7 +30,7 @@ export function AboutPrivacy() {
       <AboutHeading>{t("about.privacy.heading.5")}</AboutHeading>
       <AboutDescription>
         {t("about.privacy.text.5-1")}{" "}
-        <Link className="text-secondary-11 hover:underline" to="/about/contact">
+        <Link className="hover:underline" to="/about/contact">
           {t("about.privacy.text.5-2")}
         </Link>
       </AboutDescription>

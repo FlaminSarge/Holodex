@@ -65,19 +65,19 @@ export default function VideoCardPlaceholder({
           <div className="grid gap-2 mx-4">
             <h2 className="font-bold text-2xl">{video.title}</h2>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))]">
-              <div className="items-center font-semibold text-base-10">
+              <div className="items-center font-semibold">
                 <div className="inline-block text-sm mr-3 i-heroicons:user -mb-1" />
                 <span>{nameFn(video.channel)}</span>
               </div>
               {video.mentions &&
                 video.mentions.map((mention) => (
-                  <div className="items-center text-base-9">
+                  <div className="items-center">
                     <div className="-mb-1 mr-3 inline-block text-sm i-heroicons:user-plus" />
                     <span>{nameFn(mention)}</span>
                   </div>
                 ))}
             </div>
-            <div className="flex items-center gap-2 text-base-10">
+            <div className="flex items-center gap-2">
               <div className="-mb-1 mr-1 inline-block text-sm i-heroicons:clock" />
               <VideoCardCountdownToLive video={video} />
             </div>
@@ -100,7 +100,7 @@ export default function VideoCardPlaceholder({
               </a>
             </Button>
             <div className="flex flex-row">
-              <div className="grow text-sm text-muted">
+              <div className="grow text-sm text-muted-foreground">
                 {t("component.placeholderVideo.creditTitleText")}{" "}
                 {video.credits?.discord &&
                   t("component.placeholderVideo.discordCredit", {
@@ -154,7 +154,7 @@ export default function VideoCardPlaceholder({
               </div>
               {user && user.role !== "user" && (
                 <div className="flex flex-row flex-nowrap items-center gap-2 pl-6">
-                  <code className="rounded-md bg-base-3 text-sm text-muted my-2 px-2 py-1">
+                  <code className="rounded-md text-sm text-muted-foreground my-2 px-2 py-1">
                     {video.id}
                   </code>
                   <Button variant="default" className="" asChild>
@@ -197,7 +197,7 @@ export default function VideoCardPlaceholder({
     return (
       <Drawer open={open} onOpenChange={setOpen} modal={true}>
         <DrawerContent
-          className="rounded-lg border border-base-6 bg-base-2 p-0 border-solid"
+          className="rounded-lg border p-0 border-solid"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="h-4"></div>
@@ -211,7 +211,7 @@ export default function VideoCardPlaceholder({
     <Dialog open={open} onOpenChange={setOpen} modal={true}>
       <DialogTitle hidden>Holodex Placeholder Event</DialogTitle>
       <DialogContent
-        className="rounded-lg border border-solid border-base-6 p-0 w-[80%] sm:max-w-[980px]"
+        className="rounded-lg border border-solid p-0 w-[80%] sm:max-w-[980px]"
         onClick={(e) => e.stopPropagation()}
       >
         {content}

@@ -1,0 +1,50 @@
+/* quicklinks.css */
+.quicklink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.quicklink-discord {
+  border-color: #5865F2;
+  color: #5865F2;
+}
+
+.quicklink-discord:hover {
+  background-color: rgba(88, 101, 242, 0.1);
+}
+
+.quicklink-twitter {
+  border-color: #1DA1F2;
+  color: #1DA1F2;
+}
+
+.quicklink-twitter:hover {
+  background-color: rgba(29, 161, 242, 0.1);
+}
+
+.quicklink-github {
+  border-color: #24292e;
+  color: #24292e;
+}
+
+.quicklink-github:hover {
+  background-color: rgba(36, 41, 46, 0.1);
+}
+
+.dark .quicklink-github {
+  border-color: #777e96;
+  color: #777e96;
+}
+
+.quicklink-kofi {
+  border-color: #FF5E5B;
+  color: #FF5E5B;
+}
+
+.quicklink-kofi:hover {
+  background-color: rgba(255, 94, 91, 0.1);
+}

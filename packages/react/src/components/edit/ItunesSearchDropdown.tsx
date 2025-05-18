@@ -47,7 +47,7 @@ export function ItunesSearchDropdown({
       shouldFilter={false}
     >
       <CommandInput
-        wrapperClassName="border border-base rounded-md focus-within:ring-2 focus-within:ring-primary-9"
+        wrapperClassName="border border-base rounded-md focus-within:ring-2 focus-within:"
         id="itunes_search"
         className=""
         placeholder="Search for existing song..."
@@ -58,7 +58,7 @@ export function ItunesSearchDropdown({
       />
       {open &&
         (autocomplete?.length ? (
-          <CommandList className="absolute w-full border text-base-11 border-base top-10 z-10 rounded-b-md border-solid bg-base-1">
+          <CommandList className="absolute w-full border border-base top-10 z-10 rounded-b-md border-solid">
             <CommandGroup heading={<div>Search Results</div>} />
             <CommandSeparator />
             <CommandGroup className="h-full">
@@ -107,7 +107,7 @@ function SongItem({
       <img className="rounded-sm h-10 w-10" src={artworkUrl100 || ""} />
       <div className="flex flex-col">
         <span className="font-bold">{trackName}</span>
-        <span className="text-sm text-base-11">
+        <span className="text-sm">
           {artistName} / {collectionName} /{" "}
           {dayjs(releaseDate).format("YYYY-MM")}
         </span>
@@ -139,20 +139,20 @@ const TrackItem = ({ item }: { item: IdentifiedItunesTrack }) => {
       </div>
 
       <div className="grow">
-        <div className="font-bold text-base-10 float-right">
+        <div className="font-bold float-right">
           {formatDuration(item.trackTimeMillis)}
         </div>
-        <div className="text-primaryA-8">
+        <div className="">
           <div className="text-sm mr-1 inline-block i-heroicons:musical-note -mb-1"></div>
-          <span className="font-bold text-base-12">{item.trackName}</span>
+          <span className="font-bold">{item.trackName}</span>
         </div>
         {/* float the duration to the right instead */}
-        <div className="text-xs text-base-11">
+        <div className="text-xs">
           🎤 {item.artistName}
           {item.collectionName && ` / ${item.collectionName}`}
           {item.releaseDate ? ` / ${item.releaseDate.slice(0, 7)}` : ""}
           <span
-            className="inline-block rounded text-xs font-bold text-base-11 ml-5 bg-base-6 px-1"
+            className="inline-block rounded text-xs font-bold ml-5 px-1"
             style={{ fontSize: "0.75rem" }}
           >
             {item.src}

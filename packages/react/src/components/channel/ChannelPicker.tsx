@@ -67,7 +67,7 @@ export function ChannelPicker<
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          className="text-base-11 justify-between border-base-6 pr-2 focus:border-blue-6"
+          className="justify-between pr-2 focus:border-blue-6"
           variant="outline"
           role="combobox"
         >

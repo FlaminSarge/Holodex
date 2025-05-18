@@ -27,16 +27,16 @@ export function AutocompleteDropdownItem({
       className={"cursor-pointer"}
       {...rest}
     >
-      <span className="mr-1 font-medium text-base-11">
+      <span className="mr-1 font-medium">
         {t(`search.class.${item.type}`, item.type)}
         {":"}
       </span>
       {item.incomplete ? (
-        <span className="font-normal text-base-9">
+        <span className="font-normal">
           {t(`search.class_explanation.${item.type}`, " ")}
         </span>
       ) : (
-        <span className="text-base-11">
+        <span className="">
           {item.text === "$t"
             ? t(`search.class_values.${item.type}.${item.value}`, " ")
             : item.text === "?"

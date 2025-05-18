@@ -48,7 +48,7 @@ export function Playlists() {
       <Helmet>
         <title>{t("component.mainNav.playlist")} - Holodex</title>
       </Helmet>
-      <div className="container">
+      <div className="container mx-auto px-4">
         <TypographyH3>{t("views.playlist.page-heading")}</TypographyH3>
 
         <Card
@@ -58,13 +58,13 @@ export function Playlists() {
           }
         >
           <div className="flex items-center p-4">
-            <div className="mr-3 text-xl i-lucide:list-plus" />
+            <div className="text-xl mr-3 i-lucide:list-plus" />
             <div>
               <TypographyP className="font-medium">
                 {t("views.playlist.new-playlist-btn-label")}
               </TypographyP>
               {!user && (
-                <TypographyP className="text-sm text-base-11">
+                <TypographyP className="text-sm">
                   {t("views.playlist.login-prompt")}
                 </TypographyP>
               )}

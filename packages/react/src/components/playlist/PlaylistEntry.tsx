@@ -21,7 +21,7 @@ export default function PlaylistEntry({
   const user = useAtomValue(userAtom);
 
   return (
-    <div className="flex items-center rounded-lg p-4 gap-4 bg-base-2 shadow-xs max-md:flex-col">
+    <div className="flex items-center rounded-lg p-4 gap-4 shadow-xs max-md:flex-col">
       <div className="shrink-0 aspect-video max-md:w-full md:h-24">
         {video_ids && video_ids.length > 0 ? (
           <VideoThumbnail
@@ -29,7 +29,7 @@ export default function PlaylistEntry({
             src={makeThumbnailUrl(video_ids[0], "sm")}
           />
         ) : (
-          <div className="h-full rounded-md p-4 grid bg-base-5 place-content-center">
+          <div className="h-full rounded-md p-4 grid place-content-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="4em"
@@ -63,26 +63,30 @@ export default function PlaylistEntry({
       </div>
       <div className="w-full grow">
         <h3 className="mb-1 text-lg font-semibold">{name}</h3>
-        <span className="text-sm text-base-10">
+        <span className="text-sm">
           {video_ids?.length || 0} {t("views.channel.video")}
         </span>
-        <span className="text-sm text-base-10 ml-4">
+        <span className="text-sm ml-4">
           {t("views.playlist.item-last-updated") +
             " " +
             dayjs(updated_at).format("LLL")}
         </span>
         <div className="flex gap-2 mt-2 max-md:justify-between">
+          {video_ids && video_ids.length > 0 && (
+            <Button
+              name="Play Playlist"
+              size="sm"
+              variant="primary"
+              className="w-full md:w-20"
+              asChild
+            >
+              <StartPlaylistLink firstVideoId={video_ids[0]} playlistId={id}>
+                <span className="i-heroicons:play-solid" />
+              </StartPlaylistLink>
+            </Button>
+          )}
           <Button
-            size="sm"
-            variant="primary"
-            className="w-full md:w-20"
-            asChild
-          >
-            <StartPlaylistLink firstVideoId={video_ids[0]} playlistId={id}>
-              <span className="i-heroicons:play-solid" />
-            </StartPlaylistLink>
-          </Button>
-          <Button
+            name="Edit"
             size="sm"
             variant="outline"
             className="w-full md:w-20"

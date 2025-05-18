@@ -13,6 +13,7 @@ import presetIcons from "@unocss/preset-icons";
 import { fileURLToPath, URL } from "url";
 import bundleAnalyzer from "rollup-plugin-bundle-analyzer";
 import BuildInfo from "unplugin-info/vite";
+import tailwindcss from "@tailwindcss/vite";
 // import react from "@vitejs/plugin-react";
 
 // yeah idk why there's a lot of typescript errors in this file.
@@ -98,6 +99,7 @@ export default defineConfig({
         : "server",
       port: 9821,
     }) as unknown as PluginOption,
+    tailwindcss(),
     react({
       /* top part babel is for standard plugin-react,  */
       babel: {

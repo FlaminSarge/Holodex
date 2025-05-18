@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shadcn/ui/tabs";
 import { mostRecentOrgAtom } from "@/store/org";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { lazy, useEffect, useState } from "react";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import {
   Navigate,
   useNavigate,
@@ -20,7 +20,6 @@ import { ClipsTab } from "./ClipsTab";
 import { useVideoCardSizes } from "@/store/video";
 import { Button } from "@/shadcn/ui/button";
 import { cn } from "@/lib/utils";
-import { Separator } from "@/shadcn/ui/separator";
 import {
   isSidebarOpenAtom,
   sidebarShouldBeFullscreenAtom,
@@ -91,53 +90,49 @@ function StickyTabsList({
   membersTabLabel: string;
 }) {
   const { t } = useTranslation();
-  // usehooks-ts way:
-  // const { isIntersecting: isStuckAtTop, ref } = useIntersectionObserver({
-  //   threshold: 1,
-  //   rootMargin: "-1px 0px 0px 0px",
-  // });
-  // react-use way:
-
   const [open] = useAtom(isSidebarOpenAtom);
   const [isFullScreen] = useAtom(sidebarShouldBeFullscreenAtom);
   const user = useAtomValue(userAtom);
 
   return (
     <TabsList
-      // ref={ref}
-      // disable sticky when mobile panel is open and it should be fullscreen
       className={cn(
-        "top-0 z-20 flex items-stretch justify-start overflow-x-auto rounded-none bg-base-2 p-2 transition-all md:px-10",
-        //isStuckAtTop && "rounded-lg md:mx-8 md:px-2",
+        "w-full top-0 z-20 flex items-stretch overflow-hidden bg-background transition-all duration-200 mb-4",
+        "border-b px-4 md:px-8 h-auto rounded-none",
         !open ? "sticky" : isFullScreen ? "" : "sticky",
       )}
     >
-      <TabsTrigger value="live" className="px-2">
-        <Trans
-          i18nKey="views.home.liveOrUpcomingHeading"
-          components={{
-            liveCount: <b></b>,
-            upcomingCount: <b></b>,
-          }}
-        />
-      </TabsTrigger>
-      <TabsTrigger value="archive">
-        {t("views.home.recentVideoToggles.official")}
-      </TabsTrigger>
-      <TabsTrigger value="clips">
-        {t("views.home.recentVideoToggles.subber")}
-      </TabsTrigger>
-      <TabsTrigger value="members">{membersTabLabel}</TabsTrigger>
-      <Separator orientation="vertical" className="relative h-10" />
-      {/* The h-10 on this separator is actually load bearing - it maintains the height of the whole tab list */}
-      {/* Optional Control Buttons */}
-      {activeTab === "clips" && <ClipLanguageSelector />}
-      {activeTab !== "members" && (
-        <VideoListSettingsMenu activeTab={activeTab} />
-      )}
-      {activeTab !== "members" && <CardSizeToggle />}
-      {(user?.role === "admin" || user?.role === "editor") &&
-        activeTab != "members" && <EditingStateToggle />}
+      <div className="flex w-full md:items-center gap-4 md:justify-between">
+        <div className="flex space-x-1">
+          <TabsTrigger value="live">
+            {t("views.home.liveOrUpcomingHeading")}
+          </TabsTrigger>
+
+          <TabsTrigger value="archive">
+            {t("views.home.recentVideoToggles.official")}
+          </TabsTrigger>
+
+          <TabsTrigger value="clips">
+            {t("views.home.recentVideoToggles.subber")}
+          </TabsTrigger>
+
+          <TabsTrigger value="members">{membersTabLabel}</TabsTrigger>
+        </div>
+
+        <div className="flex items-center ml-auto space-x-2">
+          {activeTab === "clips" && <ClipLanguageSelector />}
+
+          {activeTab !== "members" && (
+            <>
+              <VideoListSettingsMenu activeTab={activeTab} />
+              <CardSizeToggle />
+            </>
+          )}
+
+          {(user?.role === "admin" || user?.role === "editor") &&
+            activeTab !== "members" && <EditingStateToggle />}
+        </div>
+      </div>
     </TabsList>
   );
 }

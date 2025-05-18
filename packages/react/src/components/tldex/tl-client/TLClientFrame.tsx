@@ -35,7 +35,7 @@ const SpeakerButton = ({
     className="gap-2 h-10 justify-start pr-1"
     onClick={onClick}
   >
-    <span className="text-xs text-base-11">{shortcut}</span>
+    <span className="text-xs">{shortcut}</span>
     <span className="truncate">
       {speaker.prefix}
       {speaker.name}
@@ -43,7 +43,7 @@ const SpeakerButton = ({
     </span>
     {isActive && (
       <div
-        className="ml-auto w-6 rounded-sm p-1 hover:bg-primary-9"
+        className="ml-auto w-6 rounded-sm p-1 hover:"
         onClick={(e) => {
           e.stopPropagation();
           onEdit(speaker);
@@ -139,30 +139,28 @@ const SpeakerEditDialog = ({
 };
 
 const KeyboardHelp = () => (
-  <div
-    className={`max-h-96 rounded-lg bg-base-3 p-4 transition-all duration-300`}
-  >
+  <div className={`max-h-96 rounded-lg  p-4 transition-all duration-300`}>
     <h3 className="mb-2 font-medium">Keyboard Shortcuts</h3>
     <ul
       className="grid gap-1 text-sm grid-cols-2"
       style={{ gridTemplateColumns: "auto 1fr" }}
     >
-      <kbd className="ml-auto block text-sm pointer-events-none text-base-8 tracking-widest">
-        {/* <span className="rounded-sm bg-base-4 p-0.5">⇪</span> */}
+      <kbd className="ml-auto block text-sm pointer-events-none tracking-widest">
+        {/* <span className="rounded-sm  p-0.5">⇪</span> */}
         {/* <span className="rounded-sm p-0.5">Ctrl-1~9</span> */}
         <div className="inline-block i-vaadin:ctrl-a"></div>
         <div className="inline-block i-f7:number-square"></div>
       </kbd>
       <span>Select speaker</span>
-      <kbd className="pointer-events-none ml-auto text-sm tracking-widest text-base-8">
+      <kbd className="pointer-events-none ml-auto text-sm tracking-widest">
         <div className="inline-block i-uil:enter"></div>
       </kbd>
       <span>Send message</span>
-      <kbd className="pointer-events-none ml-auto text-sm tracking-widest text-base-8">
+      <kbd className="pointer-events-none ml-auto text-sm tracking-widest">
         <div className="inline-block i-ic:sharp-keyboard-tab"></div>
       </kbd>
       <span>Next speaker</span>
-      <kbd className="pointer-events-none ml-auto text-sm tracking-widest text-base-8">
+      <kbd className="pointer-events-none ml-auto text-sm tracking-widest">
         <div className="inline-block i-bi:shift"></div>
         <div className="i-ic:sharp-keyboard-tab inline-block"></div>
       </kbd>
@@ -273,10 +271,7 @@ export default function TLClientFrame() {
       <div className="flex flex-1 flex-col gap-2">
         <div className="relative w-full" style={{ paddingTop: "39.13%" }}>
           <div className="absolute inset-0">
-            <PanelGroup
-              direction="horizontal"
-              className="h-full rounded-lg bg-base-3"
-            >
+            <PanelGroup direction="horizontal" className="h-full rounded-lg">
               <Panel minSize={30} defaultSize={70}>
                 <div className="flex h-full flex-col items-center justify-center">
                   <div className="aspect-video w-full">
@@ -284,19 +279,19 @@ export default function TLClientFrame() {
                   </div>
                 </div>
               </Panel>
-              <PanelResizeHandle className="w-2 bg-base-2 hover:bg-base-4" />
+              <PanelResizeHandle className="w-2 hover:" />
               <Panel minSize={13} defaultSize={15}>
-                <div className="flex h-full flex-col border-base-4 border-l">
-                  <div className="border-base-4 text-sm font-medium border-b p-2">
+                <div className="flex h-full flex-col border-l">
+                  <div className="text-sm font-medium p-2 border-b">
                     TL Chat
                   </div>
                   <div className="flex-1 overflow-y-auto p-2" />
                 </div>
               </Panel>
-              <PanelResizeHandle className="w-2 bg-base-2 hover:bg-base-4" />
+              <PanelResizeHandle className="w-2 hover:" />
               <Panel minSize={13} defaultSize={15}>
-                <div className="flex h-full flex-col border-r border-base-4">
-                  <div className="border-b border-base-4 p-2 text-sm font-medium">
+                <div className="flex h-full flex-col border-r">
+                  <div className="border-b p-2 text-sm font-medium">
                     YouTube Chat
                   </div>
                   <div className="flex-1 overflow-y-auto p-2" />
@@ -307,10 +302,10 @@ export default function TLClientFrame() {
         </div>
 
         <div className="flex gap-2">
-          <div className="flex flex-1 flex-col gap-2 rounded-lg bg-base-3 p-2">
+          <div className="flex flex-1 flex-col gap-2 rounded-lg p-2">
             <div className="flex items-center gap-1 flex-row">
               {speakers[currentSpeaker].prefix && (
-                <span className="rounded-sm border p-1 border-base-6">
+                <span className="rounded-sm border p-1">
                   {speakers[currentSpeaker].prefix}
                 </span>
               )}

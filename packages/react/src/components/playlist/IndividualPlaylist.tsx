@@ -89,10 +89,10 @@ export default function IndividualPlaylist({ playlist }: Props) {
   const userOwnsPlaylist = playlist.user_id === user?.id;
 
   return (
-    <div className="container">
+    <div className="mx-auto container">
       <div className="sticky top-0 z-10 bg-mauve-2">
         <div className="flex items-center">
-          <span className="hidden text-9xl md:block i-solar:playlist-broken text-base-7!" />
+          <span className="hidden text-9xl md:block ! i-solar:playlist-broken" />
           <div className="ml-6">
             <div className="flex gap-3">
               {renaming ? (

@@ -5,29 +5,20 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-base-3 text-base-12 hover:bg-base-4 focus-visible:ring-primary-7 active:bg-primaryA-7 border-base-5",
-        "base-outline":
-          "border border-base-5 bg-transparent hover:border-base-6 hover:bg-base-5 focus-visible:ring-primary-7",
-        outline:
-          "border border-primary-5 bg-transparent hover:border-primaryA-6 hover:bg-primaryA-5 focus-visible:ring-primary-7",
-        primary:
-          "bg-primary-9 text-base-12 hover:bg-primary-7 focus-visible:ring-primary-7",
-        secondary:
-          "bg-secondary-9 text-base-12 hover:bg-secondaryA-4 focus-visible:ring-secondary-7",
-        ghost:
-          "hover:bg-base-4 hover:text-base-12 focus-visible:ring-primary-7 active:bg-primaryA-7",
-        "ghost-primary":
-          "hover:bg-primaryA-4 hover:text-base-12 focus-visible:ring-primary-7 active:bg-primaryA-7",
-        "ghost-yt":
-          "hover:bg-base-4 hover:text-base-12 focus-visible:ring-red-7 active:bg-base-7",
-        "ghost-secondary":
-          "hover:bg-secondaryA-4 hover:text-base-12 focus-visible:ring-secondary-7 active:bg-secondaryA-7",
-        link: "text-primary underline-offset-4 hover:underline focus-visible:underline focus-visible:ring-secondary-7",
+        default: "  hover: focus-visible: active: ",
+        "base-outline": "border  bg-transparent hover: hover: focus-visible:",
+        outline: "border  bg-transparent hover: hover: focus-visible:",
+        primary: "  hover: focus-visible:",
+        secondary: "  hover: focus-visible:",
+        ghost: "hover: hover: focus-visible: active:",
+        "ghost-primary": "hover: hover: focus-visible: active:",
+        "ghost-yt": "hover: hover: focus-visible:ring-red-7 active:",
+        "ghost-secondary": "hover: hover: focus-visible: active:",
+        link: "text-primary underline-offset-4 hover:underline focus-visible:underline focus-visible:",
         destructive:
-          "bg-red-9 text-base-12 hover:bg-redA-10 focus-visible:ring-red-7 active:bg-redA-11",
+          "bg-red-9  hover:bg-redA-10 focus-visible:ring-red-7 active:bg-redA-11",
         simple:
-          "rounded-full outline-hidden ring-offset-base-2 focus:ring-2 focus:ring-primary-9 focus:ring-offset-2",
+          "rounded-full outline-hidden ring-offset-base-2 focus:ring-2 focus: focus:ring-offset-2",
       },
       size: {
         default: "h-8 gap-2 px-3.5 py-2", // also counts as "md"

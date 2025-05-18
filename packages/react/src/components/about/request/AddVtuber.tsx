@@ -141,10 +141,8 @@ export function AddVtuberForm() {
         onSubmit={form.handleSubmit(onSubmit, onInvalid)}
         className="flex flex-col gap-6"
       >
-        <Alert variant="default">
-          <div className="float-left mr-4 text-primary-10">
-            <div className="i-icon-park-outline:guide-board text-4xl" />
-          </div>
+        <Alert variant="default" hasIcon="yes">
+          <div className="i-icon-park-outline:guide-board text-4xl" />
           <AlertDescription
             dangerouslySetInnerHTML={{
               __html: t("channelRequest.VtuberRequirementText"),

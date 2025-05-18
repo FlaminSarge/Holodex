@@ -67,8 +67,8 @@ export function VideoMenu({ children, video, url }: VideoMenuProps) {
       {isOpen && (
         <DropdownMenuContent
           onClick={(e) => e.stopPropagation()}
-          // className="border-base-5"
-          className="tracking-tight"
+          // className=""
+          className="tracking-tight border-border"
         >
           {isQueued ? (
             <DropdownMenuItem
@@ -124,7 +124,7 @@ export function VideoMenu({ children, video, url }: VideoMenuProps) {
           )}
           <DropdownMenuGroup>
             <DropdownMenuSub>
-              <DropdownMenuSubTrigger className="video-menu-item bg-base-1">
+              <DropdownMenuSubTrigger className="video-menu-item">
                 <div className="i-solar:playlist-broken" />
                 {t("component.mainNav.playlist")}
               </DropdownMenuSubTrigger>
@@ -228,7 +228,7 @@ function PlaylistMenuItems({ videoId }: { videoId: string }) {
           ))}
           {isLoading && (
             <DropdownMenuItem className="justify-center" disabled>
-              <div className="i-lucide:loader-2 animate-spin leading-none" />
+              <div className="animate-spin leading-none i-lucide:loader-2" />
             </DropdownMenuItem>
           )}
           {data?.length || isLoading ? <DropdownMenuSeparator /> : null}

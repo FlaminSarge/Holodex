@@ -35,10 +35,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer
-      id="footer"
-      className="fixed border-base-5 bg-base-2 inset-x-0 bottom-0 border-t p-1"
-    >
+    <footer id="footer" className="fixed inset-x-0 bottom-0 border-t p-1">
       <nav className="flex items-center justify-between">
         {navItems.map((item, index) => (
           <FooterItem key={index} {...item} />
@@ -72,7 +69,7 @@ const FooterItem = ({
       onClick={onClick}
       className={cn(
         "flex basis-1/4 flex-col items-center justify-center text-xs",
-        isActive ? "text-primary" : "text-base-11",
+        isActive ? "text-primary" : "",
       )}
     >
       <span className={cn(icon, "mb-1 text-xl")}></span>

@@ -3,10 +3,10 @@ import { AboutHeading } from "@/components/about/Heading";
 import StatComponent from "@/components/about/Stats";
 import { Loading } from "@/components/common/Loading";
 import { darkAtom } from "@/hooks/useTheme";
-import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import { useAtomValue } from "jotai";
 import { useTranslation } from "react-i18next";
+import { QuickLinks } from "@/components/about/QuickLinks";
 
 export function AboutGeneral() {
   const { t } = useTranslation();
@@ -91,7 +91,7 @@ function StatsBlock() {
   }
 
   return (
-    <div className="grid w-full grid-cols-1 gap-4 mx-auto min-w-min @md:max-w-2xl @md:grid-cols-2 @lg:max-w-4xl">
+    <div className="w-full grid grid-cols-1 gap-4 mx-auto min-w-min @md:max-w-2xl @md:grid-cols-2 @lg:max-w-4xl">
       <StatComponent
         title={"Vtubers"}
         amount={stats.statistics.channelCount.vtuber || 0}
@@ -121,86 +121,3 @@ function StatsBlock() {
     </div>
   );
 }
-
-export const QuickLinks = () => {
-  const { t } = useTranslation();
-
-  const quickLinks = [
-    {
-      className:
-        "border-violet-10 hover:bg-violet-4 hover:border-violet-10 text-violet-10",
-      href: "https://discord.gg/jctkgHBt4b",
-      icon: "i-carbon:logo-discord",
-      label: t("about.discordBtn"),
-    },
-    {
-      className:
-        "border-blue-11 hover:bg-blue-4 hover:border-blue-11 text-blue-11",
-      href: "https://twitter.com/holodex",
-      icon: "i-tabler:brand-twitter",
-      label: t("about.quicklink.twitter"),
-    },
-    {
-      className:
-        "border-gray-11 hover:bg-gray-4 hover:border-gray-11 text-gray-11",
-      href: "https://github.com/HolodexNet/Holodex",
-      icon: "i-lucide:github",
-      label: t("about.quicklink.github"),
-    },
-    {
-      className:
-        "border-orange-10 hover:bg-orange-4 hover:border-orange-10 text-orange-10",
-      href: "https://docs.holodex.net/",
-      icon: "i-mdi:cloud-json",
-      label: t("about.quicklink.apiDocs"),
-    },
-    {
-      className:
-        "border-red-500 hover:bg-red-4 hover:border-red-500 text-red-500",
-      href: "https://ko-fi.com/holodex",
-      icon: "i-cib:ko-fi",
-      label: t("about.quicklink.ko-fi"),
-    },
-  ];
-
-  return (
-    <div className="flex w-full flex-wrap gap-4 rounded-lg bg-base-2 p-4">
-      {quickLinks.map((link, index) => (
-        <StyledExternalLink key={index} {...link} />
-      ))}
-    </div>
-  );
-};
-
-interface StyledExternalLinkProps {
-  href: string;
-  icon: string;
-  label: string;
-  className?: string;
-}
-
-export const StyledExternalLink = ({
-  href,
-  icon,
-  label,
-  className,
-}: StyledExternalLinkProps) => {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(
-        `
-        flex grow basis-1 items-center gap-2 rounded-lg border-2 px-4
-        py-2 transition-all duration-300 ease-in-out
-        focus:outline-hidden focus:ring-2 focus:ring-base-8 focus:ring-offset-2
-      `,
-        className,
-      )}
-    >
-      <span className={icon}></span>
-      <span>{label}</span>
-    </a>
-  );
-};

@@ -135,7 +135,7 @@ export function TLChat({ videoId }: TLChatProps) {
     <Virtuoso
       ref={virtuosoRef}
       components={{ Item: TLChatItem }}
-      className="h-full w-full bg-base-2 py-2"
+      className="h-full w-full py-2"
       initialTopMostItemIndex={{ index: "LAST", align: "end" }}
       // firstItemIndex={chatDB.messages?.length ? 30 : 0}
       alignToBottom
@@ -157,7 +157,7 @@ const TLChatItem = (
 ) => (
   <div
     {...props}
-    className={cn(props.className, "border-b-0 border-base-4 last:border-b-0")}
+    className={cn(props.className, "border-b-0  last:border-b-0")}
   />
 );
 
@@ -186,8 +186,8 @@ function TLChatMessage({
   return (
     <div
       className={cn(
-        "flex flex-col p-1 px-2 hover:cursor-pointer hover:bg-base-4",
-        highlighted && "bg-primary-4 hover:bg-primary-5",
+        "flex flex-col p-1 px-2 hover:cursor-pointer hover:",
+        highlighted && " hover:",
       )}
       onClick={() => {
         player?.seekTo(video_offset, "seconds");
@@ -196,7 +196,7 @@ function TLChatMessage({
     >
       {showHeader && (
         <div
-          className={cn("group flex items-center gap-2 text-base-11", {
+          className={cn("group flex items-center gap-2 ", {
             "text-primary": is_owner,
             "text-secondary":
               !is_owner && (is_verified || is_moderator || is_vtuber),
@@ -214,7 +214,7 @@ function TLChatMessage({
                 <Badge
                   size="sm"
                   variant="outline"
-                  className="border-base text-base-11 px-1 py-0.5 text-[0.6rem]"
+                  className="border-base px-1 py-0.5 text-[0.6rem]"
                 >
                   VTuber
                 </Badge>
@@ -223,7 +223,7 @@ function TLChatMessage({
                 <Badge
                   size="sm"
                   variant="outline"
-                  className="border-base px-1 py-0.5 text-[0.6rem] text-base-11"
+                  className="border-base px-1 py-0.5 text-[0.6rem]"
                 >
                   Mod
                 </Badge>
@@ -241,7 +241,7 @@ function TLChatMessage({
         </div>
       )}
       <div className="break-words">
-        <span className="whitespace-nowrap text-xs text-base-11 mr-2">
+        <span className="whitespace-nowrap text-xs mr-2">
           {formatDuration(video_offset * 1000)}
         </span>
         {parsed ? (
@@ -262,7 +262,7 @@ function TLChatMessage({
  * 
  *         <PopoverContent>
           <div className="flex flex-col items-center gap-2">
-            <span className="font-bold text-base-12">{name}</span>
+            <span className="font-bold ">{name}</span>
             {channel_id && (
               <Button className="w-full bg-red hover:bg-red-8" asChild>
                 <Link

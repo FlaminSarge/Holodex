@@ -36,8 +36,8 @@ export function DatePicker(
         <Button
           variant="outline"
           className={cn(
-            "h-9 justify-start border-base-6 text-left text-sm font-normal focus:border-blue-6 ",
-            !date && "text-base-11",
+            "h-9 justify-start  text-left text-sm font-normal focus:border-blue-6 ",
+            !date && "",
             className,
           )}
         >

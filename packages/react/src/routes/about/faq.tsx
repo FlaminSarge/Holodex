@@ -28,7 +28,7 @@ export function AboutFaq() {
               {t("about.faq.ytchatContent")}
             </AboutDescription>
             <Link
-              className="text-secondary-11 hover:underline"
+              className="hover:underline"
               to="https://support.mozilla.org/en-US/kb/third-party-cookies-firefox-tracking-protection?redirectslug=disable-third-party-cookies"
               target="_blank"
             >
@@ -44,7 +44,7 @@ export function AboutFaq() {
             <AboutDescription>
               {t("about.faq.autoplayContent")}
             </AboutDescription>
-            <h4 className="py-2 text-xl font-bold">Safari:</h4>
+            <h4 className="text-xl py-2 font-bold">Safari:</h4>
             <img src="https://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2017/07/safari-custom-settings-websites-mac-screenshot-06.jpg?itok=ONVYTcno" />
             <h4 className="py-2 text-xl font-bold">Firefox:</h4>
             <img src="https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/firefox/files/2019/04/Screen-Shot-2019-04-01-at-11.21.21-AM.png" />
@@ -89,10 +89,7 @@ export function AboutFaq() {
           <AccordionContent>
             <AboutDescription>
               {t("about.faq.subber.contents.0")}
-              <Link
-                to="/about/request"
-                className="text-secondary-11 hover:underline"
-              >
+              <Link to="/about/request" className="hover:underline">
                 {t("about.faq.subber.contents.1")}
               </Link>
               {t("about.faq.subber.contents.2")}

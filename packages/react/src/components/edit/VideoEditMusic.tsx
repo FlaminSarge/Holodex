@@ -21,14 +21,14 @@ export function VideoEditMusic({ video }: { video: Video }) {
     adjustStartTime,
     adjustEndTime,
     adjustDuration,
-  } = useTrackTiming(video.duration - 1);
+  } = useTrackTiming(Math.floor(video.duration || 12 * 60 * 60));
 
   const [trackName, setTrackName] = useState("");
   const [artist, setArtist] = useState("");
 
   return (
-    <div className="flex flex-col gap-4 p-4 text-base-11 justify-items-stretch">
-      <TypographyH4 className="text-base-12">
+    <div className="flex flex-col gap-4 p-4 justify-items-stretch">
+      <TypographyH4 className="">
         <div className="mr-1 inline-block align-middle i-lucide:list-plus"></div>
         Add New Song / Select song from Tracklist to modify
       </TypographyH4>
@@ -46,7 +46,7 @@ export function VideoEditMusic({ video }: { video: Video }) {
         />
       </div>
       <div className="flex flex-row flex-wrap gap-2">
-        <div className="grid grow gap-1 min-w-80">
+        <div className="grow gap-1 grid min-w-80">
           <Label htmlFor="track_name">Track Name</Label>
           <Input
             type="text"
@@ -69,7 +69,7 @@ export function VideoEditMusic({ video }: { video: Video }) {
       </div>
       <div className="grid gap-1">
         <Label htmlFor="track_name">Track Timing Controls</Label>
-        <div className="flex justify-center rounded-md border border-solid border-base-5 pb-6 pt-2 focus-within:ring-2 focus-within:ring-primary-7">
+        <div className="flex justify-center rounded-md border border-solid focus-within: pb-6 pt-2 border-input focus-within:ring-2">
           <div>
             <TimeAdjuster
               videoId={video.id}
@@ -80,7 +80,7 @@ export function VideoEditMusic({ video }: { video: Video }) {
           <TooltipProvider>
             <Tooltip delayDuration={100}>
               <TooltipTrigger asChild>
-                <div className="mx-1 cursor-pointer rounded-sm p-2 text-base-8 mb-1 mt-5 hover:bg-base-3 hover:hover:text-base-10">
+                <div className="mx-1 cursor-pointer rounded-sm p-2 mb-1 mt-5">
                   <div className="i-ic:sharp-start"></div>
                 </div>
               </TooltipTrigger>
@@ -92,14 +92,14 @@ export function VideoEditMusic({ video }: { video: Video }) {
             <DurationAdjuster
               value={duration}
               onValueChange={adjustDuration}
-              max={video.duration - timeStart}
+              max={(video.duration || 12 * 60 * 60) - timeStart}
             />
           </div>
 
           <TooltipProvider>
             <Tooltip delayDuration={100}>
               <TooltipTrigger asChild>
-                <div className="mx-1 mb-1 mt-5 cursor-pointer rounded-sm p-2 text-base-8 hover:bg-base-3 hover:text-base-10">
+                <div className="mx-1 mb-1 mt-5 cursor-pointer rounded-sm p-2">
                   <div className="i-ic:sharp-keyboard-tab"></div>
                 </div>
               </TooltipTrigger>
@@ -117,23 +117,20 @@ export function VideoEditMusic({ video }: { video: Video }) {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button variant="ghost" className="bg-primaryA-4 hover:bg-primaryA-8">
+        <Button variant="primary" className="">
           Add Song
         </Button>
-        <Button
-          variant="ghost"
-          className="bg-redA-4 hover:bg-redA-8 active:bg-redA-11"
-        >
+        <Button variant="destructive" className="">
           Reset
         </Button>
-        <Button variant="ghost-secondary">Listen to Track on iTunes</Button>
+        <Button variant="secondary">Listen to Track on iTunes</Button>
       </div>
-      <hr className="border-base-4" />
-      <TypographyH4 className="text-base-12">
+      <hr className="" />
+      <TypographyH4 className="">
         <div className="mr-1 inline-block align-middle i-lucide:list-music"></div>
         Tracklist:
       </TypographyH4>
-      <div className="rounded-lg bg-base-3 min-h-4"></div>
+      <div className="rounded-lg min-h-4"></div>
     </div>
   );
 }

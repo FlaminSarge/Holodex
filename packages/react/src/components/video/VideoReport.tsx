@@ -228,7 +228,7 @@ export function ReportDialogMenu({
 
               <div className="mb-4">
                 <div className="font-medium">{video.title}</div>
-                <div className="text-base-11">{video.channel.name}</div>
+                <div className="">{video.channel.name}</div>
               </div>
 
               <FormField
@@ -312,7 +312,7 @@ export function ReportDialogMenu({
                             {selectedChannels.map((channel) => (
                               <div
                                 key={channel.id}
-                                className="flex items-center gap-2 rounded-md bg-base-3 px-2 py-1"
+                                className="flex items-center gap-2 rounded-md px-2 py-1"
                               >
                                 <span>{channel.name}</span>
                                 <Button

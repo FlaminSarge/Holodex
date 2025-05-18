@@ -15,7 +15,7 @@ const SubtitleList = () => {
   const manager = useAtomValue(subtitleManagerAtom);
   const videoStatusAtom = videoStatusAtomFamily(id!);
   return (
-    <div className="h-full overflow-y-auto bg-base-2">
+    <div className="h-full overflow-y-auto">
       {manager.subtitles.map((subtitle, index, arr) => (
         <SubtitleItem
           key={"editor" + subtitle.id}
@@ -111,11 +111,9 @@ const SubtitleItem = React.memo(
     return (
       <div
         className={clsx(
-          "flex border-b border-base-4 py-1 hover:bg-base-3",
-          progress > subtitle.video_offset &&
-            progress < subtitle.end &&
-            "bg-primaryA-4 border-primary-7",
-          progress >= subtitle.end && "bg-base-2 opacity-80",
+          "flex border-b  py-1 hover:",
+          progress > subtitle.video_offset && progress < subtitle.end && " ",
+          progress >= subtitle.end && " opacity-80",
         )}
       >
         <div className="flex flex-col justify-between space-y-1 brightness-50">
@@ -149,7 +147,7 @@ const SubtitleItem = React.memo(
           </Button>
         </div>
         <div className="grow">
-          <div className="text-xs text-base-11">
+          <div className="text-xs">
             {formatDuration(subtitle.video_offset * 1000)} -{" "}
             {subtitle.duration &&
               formatDuration(subtitle.video_offset * 1000 + subtitle.duration)}
@@ -157,7 +155,7 @@ const SubtitleItem = React.memo(
           <Textarea
             value={subtitle.message}
             onChange={handleChange}
-            className="w-full rounded p-1 text-sm bg-base-1"
+            className="w-full rounded p-1 text-sm"
             rows={3}
           />
         </div>

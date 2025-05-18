@@ -113,9 +113,7 @@ export function SettingsContentPreferences() {
               ))}
             </div>
           ) : (
-            <div className="text-base-11">
-              {t("views.channels.blockedAreEmpty")}
-            </div>
+            <div className="">{t("views.channels.blockedAreEmpty")}</div>
           )}
         </div>
       </SettingsItem>

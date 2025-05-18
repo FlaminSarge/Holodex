@@ -84,7 +84,7 @@ export function StatusTweetEmbed({
   return (
     <div
       {...props}
-      className={cn("p-4 text-base-8 ", props.className)}
+      className={cn("p-4  ", props.className)}
       style={{ minWidth: "min(500px, 100vw)" }}
       ref={ref}
     >

@@ -89,7 +89,7 @@ export function ChannelCard({
     case "list":
       return (
         <div
-          className="flex items-center gap-2 md:gap-4 rounded-lg bg-base-3 p-2 transition-all md:p-4 hover:cursor-pointer hover:bg-base-4"
+          className="flex gap-2 transition-all rounded-lg items-center md:gap-4 bg-card p-2 md:p-4 hover:cursor-pointer"
           onClick={goToChannelClickHandler}
         >
           <Link
@@ -101,14 +101,14 @@ export function ChannelCard({
               channelId={id}
             />
             <div className="flex flex-col overflow-hidden">
-              <div className="text-xs text-base-11">
+              <div className="text-xs">
                 {org}
                 {group && ` / ${group}`}
               </div>
               <div className="line-clamp-1 text-lg font-bold">
                 {preferredName}
               </div>
-              <div className="text-base-11 text-sm">
+              <div className="text-sm">
                 {showSubscribers &&
                   t("component.channelInfo.subscriberCount", {
                     n: formatCount(subscriber_count ?? "0"),
@@ -128,7 +128,7 @@ export function ChannelCard({
                     <TopicBadge
                       size="sm"
                       topic={topic}
-                      className="border-base-7 capitalize text-base-10"
+                      className="capitalize"
                     />
                   ))}
                 </div>
@@ -150,7 +150,11 @@ export function ChannelCard({
       return (
         // Set min-height because react-virtuoso will break if the height is not fixed
         <div
-          className="flex w-full flex-col items-center gap-2 bg-base-3 p-4 transition-all hover:cursor-pointer hover:bg-base-4 group relative h-full min-h-96 rounded-md"
+          className={
+            "flex w-full flex-col bg-card items-center gap-2 p-4 transition-all  group relative h-full min-h-96 rounded-md" +
+            " hover:bg-[color-mix(in_oklch,var(--card)_97%,var(--foreground))] hover:border hover:cursor-pointer " +
+            (inactive && " text-muted-foreground")
+          }
           onClick={goToChannelClickHandler}
         >
           <Link
@@ -177,26 +181,28 @@ export function ChannelCard({
                 <div className="i-heroicons:ellipsis-vertical" />
               </Button>
             </ChannelMenu>
-            <ChannelImg
-              className={`-z-0 -mb-36 mt-4 h-32 w-32 opacity-20 blur-2xl ${inactive ? "brightness-75 saturate-50" : "saturate-150"}`}
-              channelId={id}
-            />
+            {!inactive && (
+              <ChannelImg
+                className={`-z-0 -mb-36 mt-4 h-32 w-32 opacity-20 blur-2xl saturate-150`}
+                channelId={id}
+              />
+            )}
             <ChannelImg
               className={`z-10 h-24 w-24 ${inactive && "brightness-75 saturate-50"}`}
               channelId={id}
             />
             <div
-              className={`${inactive && "text-base-10"} z-10 line-clamp-2 min-h-[2lh] text-center text-lg font-bold`}
+              className={`z-10 line-clamp-2 min-h-[2lh] text-center text-lg font-bold`}
             >
               {preferredName}
             </div>
             <div className="flex flex-col items-center">
-              <div className="text-sm text-base-11 whitespace-nowrap">
+              <div className="text-sm whitespace-nowrap">
                 {t("component.channelInfo.subscriberCount", {
                   n: formatCount(subscriber_count ?? "0"),
                 })}
               </div>
-              <div className="flex flex-wrap text-sm text-base-11 justify-center gap-x-1 gap-y-0">
+              <div className="flex flex-wrap text-sm justify-center gap-x-1 gap-y-0">
                 <span className="whitespace-nowrap">
                   {t("component.channelInfo.videoCount", {
                     0: video_count ?? 0,
@@ -212,11 +218,7 @@ export function ChannelCard({
             </div>
             <div className="mt-1 flex flex-wrap justify-center gap-0.5">
               {top_topics?.map((topic) => (
-                <TopicBadge
-                  size="sm"
-                  topic={topic}
-                  className="border-base-7 capitalize text-base-10"
-                />
+                <TopicBadge size="sm" topic={topic} className="capitalize" />
               ))}
             </div>
           </Link>

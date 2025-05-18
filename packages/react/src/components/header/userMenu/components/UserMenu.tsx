@@ -54,13 +54,13 @@ export function UserMenu() {
 
   return (
     <DropdownMenu modal={false}>
-      <DropdownMenuTrigger className="w-8 overflow-hidden rounded-full bg-base-2 z-30 mx-2 shrink-0">
+      <DropdownMenuTrigger className="w-8 overflow-hidden rounded-full z-30 mx-2 shrink-0">
         <img
           src={`https://api.dicebear.com/7.x/shapes/svg?seed=${user.id}`}
           alt="User avatar"
         />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="relative z-30 bg-base-2 right-8 w-72">
+      <DropdownMenuContent className="relative z-30 right-8 w-72">
         <DropdownMenuItem className="flex flex-row">
           <Avatar className="mx-2">
             <AvatarImage
@@ -82,12 +82,12 @@ export function UserMenu() {
                 <div className="i-logos:google-icon" />
               </div>
               {/* <div
-                className={user.twitter_id ? "text-secondary-11" : "text-base"}
+                className={user.twitter_id ? "" : "text-base"}
               >
                 <div className="i-mdi:twitter" />
               </div> */}
             </div>
-            <div className="flex flex-row capitalize text-primary-11">
+            <div className="flex flex-row capitalize">
               <div className="mx-1 animate-pulse i-mage:stars-c"></div>
 
               {user.contribution_count + " " + t("component.mainNav.points")}

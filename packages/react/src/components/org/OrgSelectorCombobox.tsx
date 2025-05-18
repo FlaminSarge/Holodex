@@ -45,14 +45,14 @@ export function OrgSelectorCombobox({
           role="combobox"
           aria-expanded={open}
           className={cn(
-            "inline-flex min-h-8 w-full items-center justify-between rounded-md bg-base-3 py-1 pl-4 pr-2",
-            "text-left text-lg font-medium text-base-12 transition",
-            "hover:bg-primary-5 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary-7 active:scale-[97%] active:bg-primaryA-7 disabled:pointer-events-none disabled:opacity-50",
-            open && "bg-base-4 ring-2 ring-primary-9 hover:bg-base-5",
+            "inline-flex min-h-8 w-full items-center justify-between rounded-md  py-1 pl-4 pr-2",
+            "text-left text-lg font-medium  transition",
+            "hover: focus-visible:outline-hidden focus-visible:ring-1 focus-visible: active:scale-[97%] active: disabled:pointer-events-none disabled:opacity-50",
+            open && " ring-2  hover:",
           )}
         >
           {t("Go to...")}
-          <div className="i-lucide:chevrons-up-down ml-2 inline-block h-4 w-4 shrink-0 align-middle opacity-50"></div>
+          <div className="ml-2 inline-block h-4 w-4 shrink-0 align-middle opacity-50 i-lucide:chevrons-up-down"></div>
         </button>
       </PopoverTrigger>
       <PopoverContent className="max-w-[80vw] p-0">

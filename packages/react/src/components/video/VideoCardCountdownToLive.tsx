@@ -21,13 +21,13 @@ const LiveCounter = React.memo(
     const { t } = useTranslation();
 
     return (
-      <div className={cn("flex gap-1 text-base-11", className)}>
+      <div className={cn("flex gap-1 ", className)}>
         {start_date || viewers ? (
           <span className="text-red-500">
             {t("component.videoCard.liveNow")}
           </span>
         ) : (
-          <span className="capitalize text-secondary-10">{t("time.soon")}</span>
+          <span className="capitalize">{t("time.soon")}</span>
         )}
         {start_date && viewers && viewers > 0 ? (
           <>
@@ -66,7 +66,7 @@ const TimeTooltip = ({
       <TooltipTrigger asChild>
         <span
           className={cn(
-            "text-base-11",
+            "",
             isLikely && "italic hover:animate-pulse",
             className,
           )}
@@ -74,7 +74,11 @@ const TimeTooltip = ({
           {children}
         </span>
       </TooltipTrigger>
-      <TooltipContent className="bg-base-3 p-1.5">
+      <TooltipContent
+        className="p-1.5 drop-shadow-muted drop-shadow-lg"
+        variant="primary"
+        side="bottom"
+      >
         <WorldTimeTooltip
           id={id}
           timestamp={timestamp}
@@ -120,10 +124,17 @@ export function VideoCardCountdownToLive({
     !onlyTime
   ) {
     const tick = dayjs(video.start_scheduled);
-    const countdownText = t("time.diff_future_date", {
-      0: tick.fromNow(false) + (video.certainty === "likely" ? "??" : ""),
-      1: tick.format("hh:mm A"),
-    });
+    const countdownText = t(
+      video.type === "placeholder"
+        ? video.certainty === "likely"
+          ? "time.diff_uncertain_future_date"
+          : "time.diff_placeholder_future_date"
+        : "time.diff_future_date",
+      {
+        0: tick.fromNow(false),
+        1: tick.format("hh:mm A"),
+      },
+    );
 
     return (
       <TimeTooltip
@@ -199,7 +210,7 @@ const WorldTimeTooltip = React.memo(
     return (
       <div className="w-64">
         {isLikely && (
-          <div className="rounded-md p-2 text-xs mb-3 bg-yellow-500/10 text-yellow-10">
+          <div className="rounded-md text-xs px-1 mb-2 text-primary-foreground">
             {t("component.videoCard.uncertainPlaceholder")}
           </div>
         )}
@@ -212,16 +223,14 @@ const WorldTimeTooltip = React.memo(
             return (
               <div
                 key={`${id}_${timezone}`}
-                className="flex items-center justify-between rounded-sm hover:bg-base-4"
+                className="flex items-center justify-between rounded-sm px-1 odd:bg-background/20"
               >
                 <div className="flex flex-col">
-                  <span className="text-sm font-medium text-base-12">
-                    {cityName}
-                  </span>
-                  <span className="text-xs text-base-10">{day}</span>
+                  <span className="text-sm font-medium">{cityName}</span>
+                  {/* <span className="text-xs">{day}</span> */}
                 </div>
-                <div className="font-mono text-sm text-base-11 font-extrabold antialiased">
-                  {time}
+                <div className="text-sm font-bold">
+                  {day} - {time}
                 </div>
               </div>
             );

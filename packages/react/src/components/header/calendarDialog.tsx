@@ -165,10 +165,7 @@ export default function CalendarUsage({
         />
       </div>
 
-      <Command
-        className="rounded-lg border border-base-4 shadow-md"
-        shouldFilter={false}
-      >
+      <Command className="rounded-lg border shadow-md" shouldFilter={false}>
         <CommandInput
           placeholder={t("Filter by Topic, Org, Channel ...")}
           value={search}
