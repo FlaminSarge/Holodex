@@ -56,15 +56,15 @@ export function UserMenu() {
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger className="w-8 overflow-hidden rounded-full z-30 mx-2 shrink-0">
         <img
-          src={`https://api.dicebear.com/7.x/shapes/svg?seed=${user.id}`}
+          src={`https://api.dicebear.com/9.x/shapes/svg?seed=${user.id}`}
           alt="User avatar"
         />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="relative z-30 right-8 w-72">
+      <DropdownMenuContent className="z-30 relative right-8 w-72">
         <DropdownMenuItem className="flex flex-row">
           <Avatar className="mx-2">
             <AvatarImage
-              src={`https://api.dicebear.com/7.x/shapes/svg?seed=${user.id}`}
+              src={`https://api.dicebear.com/9.x/shapes/svg?seed=${user.id}`}
               alt="userIcon"
             />
             <AvatarFallback>CN</AvatarFallback>
