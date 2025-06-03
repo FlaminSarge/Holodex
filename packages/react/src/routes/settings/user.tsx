@@ -34,11 +34,11 @@ export function SettingsUser() {
 
   return (
     <div className="flex flex-col">
-      <div className="my-4 flex items-center gap-6">
+      <div className="flex my-4 items-center gap-6">
         <div className="flex flex-col items-center">
           <img
             className="w-24 rounded-full h-24"
-            src={`https://api.dicebear.com/7.x/shapes/svg?seed=${user.id}`}
+            src={`https://api.dicebear.com/9.x/shapes/svg?seed=${user.id}`}
           />
           <Badge className="-mt-2">{user.role}</Badge>
         </div>
@@ -48,7 +48,7 @@ export function SettingsUser() {
             {user.contribution_count}
             {t("component.mainNav.points")}
           </div>
-          <div className="flex flex-wrap gap-2 text-sm">
+          <div className="flex gap-2 flex-wrap text-sm">
             <Badge className="border-base" variant="outline">
               <kbd className="font-bold">#{user.id}</kbd>
             </Badge>
@@ -102,7 +102,7 @@ export function SettingsUser() {
             </TooltipProvider>
           </div>
         </div>
-        <div className="ml-auto hidden flex-col gap-2 xl:flex">
+        <div className="hidden flex-col gap-2 ml-auto xl:flex">
           {user?.role !== "user" && (
             <Button variant="base-outline" asChild>
               <Link
@@ -132,7 +132,7 @@ export function SettingsUser() {
         <LoginButtons />
       </SettingsItem>
       <SettingsItem label={t("views.login.username")} fullWidth>
-        <div className="ml-auto flex w-full items-center gap-2 max-w-md">
+        <div className="ml-auto flex items-center gap-2 w-full max-w-md">
           <Input placeholder={user.username} />
           <Button className="whitespace-nowrap">
             {t("views.watch.uploadPanel.usernameChange")}
