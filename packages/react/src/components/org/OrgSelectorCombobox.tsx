@@ -46,9 +46,9 @@ export function OrgSelectorCombobox({
           aria-expanded={open}
           className={cn(
             "inline-flex min-h-8 w-full items-center justify-between rounded-md  py-1 pl-4 pr-2",
-            "text-left text-lg font-medium  transition",
-            "hover: focus-visible:outline-hidden focus-visible:ring-1 focus-visible: active:scale-[97%] active: disabled:pointer-events-none disabled:opacity-50",
-            open && " ring-2  hover:",
+            "text-left text-lg font-medium transition",
+            "hover:bg-primary/40 focus-visible:ring-primary/80 focus-visible:outline-hidden focus-visible:ring-1 active:scale-[97%] disabled:pointer-events-none disabled:opacity-50",
+            open && " ring-2 ring-primary",
           )}
         >
           {t("Go to...")}
@@ -71,7 +71,7 @@ export function OrgSelectorCombobox({
                   }}
                 >
                   <img
-                    className="mr-2 h-8 w-8 rounded-full"
+                    className="rounded-full mr-2 h-8 w-8"
                     src={getThumbnailForOrg(org.icon)}
                   ></img>
                   {org.name}

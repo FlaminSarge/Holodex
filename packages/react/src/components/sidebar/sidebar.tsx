@@ -65,7 +65,11 @@ export function Sidebar() {
   useOnClickOutside(ref, handleClickOutside);
 
   return (
-    <aside className="z-40 border-r border-r-base pb-12" id="sidebar" ref={ref}>
+    <aside
+      className="z-40 border-r border-r-base pb-12 bg-sidebar"
+      id="sidebar"
+      ref={ref}
+    >
       <div className="flex flex-col min-h-dvh">
         <div className="flex items-center gap-2 px-4 pb-2 justify-end pt-4">
           <Link
@@ -79,7 +83,7 @@ export function Sidebar() {
           <div className="grow" />
           <Button
             variant="ghost"
-            className="i-lucide:x p-4 md:hidden"
+            className="p-4 md:hidden i-lucide:x"
             onClick={setClose}
           />
         </div>

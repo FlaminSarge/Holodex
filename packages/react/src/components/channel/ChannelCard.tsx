@@ -152,7 +152,7 @@ export function ChannelCard({
         <div
           className={
             "flex w-full flex-col bg-card items-center gap-2 p-4 transition-all  group relative h-full min-h-96 rounded-md" +
-            " hover:bg-[color-mix(in_oklch,var(--card)_97%,var(--foreground))] hover:border hover:cursor-pointer " +
+            " hover:bg-[color-mix(in_oklch,var(--card)_97%,var(--foreground))] hover:ring hover:ring-secondary hover:cursor-pointer " +
             (inactive && " text-muted-foreground")
           }
           onClick={goToChannelClickHandler}
@@ -202,7 +202,7 @@ export function ChannelCard({
                   n: formatCount(subscriber_count ?? "0"),
                 })}
               </div>
-              <div className="flex flex-wrap text-sm justify-center gap-x-1 gap-y-0">
+              <div className="flex text-sm flex-wrap justify-center gap-x-1 gap-y-0">
                 <span className="whitespace-nowrap">
                   {t("component.channelInfo.videoCount", {
                     0: video_count ?? 0,
