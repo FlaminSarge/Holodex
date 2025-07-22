@@ -20,8 +20,8 @@ export function Logo({ className, ...props }: React.SVGProps<SVGSVGElement>) {
           y2="11.3"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="color-mix(in lch, var(--primary-10), var(--primary-12) 30%)" />
-          <stop offset="1" stopColor="var(--primary-10)" stopOpacity=".8" />
+          <stop stopColor="color-mix(in oklch, var(--primary), var(--primary-foreground) 30%)" />
+          <stop offset="1" stopColor="var(--primary)" stopOpacity=".8" />
         </linearGradient>
         <linearGradient
           id="back-tri"
@@ -31,8 +31,8 @@ export function Logo({ className, ...props }: React.SVGProps<SVGSVGElement>) {
           y2="18.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="color-mix(in lch, var(--secondary-11), var(--secondary-8))" />
-          <stop offset="1" stopColor="var(--secondary-10)" />
+          <stop stopColor="color-mix(in oklch, var(--secondary), var(--secondary-foreground))" />
+          <stop offset="1" stopColor="var(--secondary)" />
         </linearGradient>
       </defs>
 
